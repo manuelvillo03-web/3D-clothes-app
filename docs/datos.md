@@ -43,6 +43,16 @@ material, EAN, enlace e imágenes, pero ningún campo con medidas de la prenda
 - **Cada prenda guarda su fuente** (`source`) para poder retirarla si una
   marca lo pide.
 
+## Estado
+
+- **Hecho:** 17 guías de tallas oficiales (Levi's, Mango, New Balance, Nike,
+  Primark, ASOS) en `data/catalog/marcas`, con URL y fecha. Van dentro de la
+  app y en la tabla `garments` de Supabase.
+- **Hecho:** los usuarios pueden añadir prendas con su tabla (de la prenda o
+  por cuerpo) y, si quieren, enviarlas a `garment_submissions` para revisión.
+- **Falta:** Zara, H&M, Pull&Bear y Bershka publican sus guías dentro de cada
+  ficha y con JavaScript; hay que copiarlas a mano prenda a prenda o pedirlas.
+
 ## Pendiente
 
 - Darse de alta como editor (publisher) en una red de afiliación y solicitar

@@ -29,6 +29,12 @@ calibración sube `ENGINE_VERSION` en `engine/src/probador/ease.py`.
 
 ## Lo que ya está comprobado
 
+- El maniquí del móvil, dadas las 6 medidas básicas, se separa del cuerpo real
+  10 mm de media por vértice, y estima las medidas que faltan con estos
+  errores en cuerpos sintéticos: muslo ±2,4 cm, hombros ±1,6-2,1, manga ±2,0,
+  largo de torso ±0,8 (`engine/reports/body-model.json`). En personas reales
+  habrá que comprobarlo, sobre todo el muslo y los hombros.
+
 - El maniquí reproduce las medidas que se le dan: en 30 cuerpos sintéticos,
   todas a 1 cm o menos (`scripts/evaluate_body_fit.py`).
 - Las medidas que el usuario no da salen de un cuerpo humano plausible, pero

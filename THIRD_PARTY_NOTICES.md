@@ -6,6 +6,13 @@
 | Datos de MakeHuman / MPFB2 incluidos en Anny | Formas del cuerpo («targets») | CC0 1.0 |
 | [clad-body](https://github.com/datar-psa/clad-body) 0.6.1, Arkadiusz Kraus | Medidas ISO 8559-1 sobre el maniquí | Apache 2.0 |
 | PyTorch, NumPy, SciPy, trimesh, FastAPI, Pydantic, Uvicorn | Cálculo y servidor | BSD / MIT |
+| Expo, React Native, React, Expo Router | App | MIT |
+| three.js, React Three Fiber | Visor 3D | MIT |
+| Zod | Validación de prendas en la app | MIT |
+
+El modelo del cuerpo que va dentro de la app (`app/assets/models/body-model.bin`)
+se deriva de Anny y de sus datos de MakeHuman (Apache 2.0 y CC0): es un
+resumen estadístico de cuerpos generados con ellos.
 
 **No usamos** los datos con licencia no comercial que Anny descarga para
 convertir a SMPL-X (`anny2smplx`). Ninguna parte del motor llama a esa
