@@ -1,0 +1,133 @@
+{
+  "id": "nike-camisetas-hombre",
+  "brand": "Nike",
+  "name": "Camisetas y partes de arriba de hombre (guía de tallas)",
+  "audience": "men",
+  "category": "tshirt",
+  "cut": "regular",
+  "chart_type": "body",
+  "sizes": [
+    {
+      "label": "XS",
+      "measurements": {
+        "chest": [
+          80.0,
+          88.9
+        ],
+        "waist": [
+          64.8,
+          73.7
+        ],
+        "hip": [
+          80.0,
+          88.9
+        ]
+      }
+    },
+    {
+      "label": "S",
+      "measurements": {
+        "chest": [
+          88.9,
+          95.3
+        ],
+        "waist": [
+          73.7,
+          81.3
+        ],
+        "hip": [
+          88.9,
+          95.3
+        ]
+      }
+    },
+    {
+      "label": "M",
+      "measurements": {
+        "chest": [
+          95.3,
+          104.1
+        ],
+        "waist": [
+          81.3,
+          88.9
+        ],
+        "hip": [
+          95.3,
+          104.1
+        ]
+      }
+    },
+    {
+      "label": "L",
+      "measurements": {
+        "chest": [
+          104.1,
+          111.8
+        ],
+        "waist": [
+          88.9,
+          96.5
+        ],
+        "hip": [
+          104.1,
+          111.8
+        ]
+      }
+    },
+    {
+      "label": "XL",
+      "measurements": {
+        "chest": [
+          111.8,
+          123.2
+        ],
+        "waist": [
+          96.5,
+          109.2
+        ],
+        "hip": [
+          111.8,
+          119.4
+        ]
+      }
+    },
+    {
+      "label": "XXL",
+      "measurements": {
+        "chest": [
+          123.2,
+          135.9
+        ],
+        "waist": [
+          109.2,
+          120.7
+        ],
+        "hip": [
+          119.4,
+          128.3
+        ]
+      }
+    },
+    {
+      "label": "3XL",
+      "measurements": {
+        "chest": [
+          135.9,
+          147.3
+        ],
+        "waist": [
+          120.7,
+          133.4
+        ],
+        "hip": [
+          128.3,
+          135.9
+        ]
+      }
+    }
+  ],
+  "url": "https://www.nike.com/id/size-fit/mens-tops-alpha",
+  "source": "Guía de tallas oficial de Nike (https://www.nike.com/id/size-fit/mens-tops-alpha), medidas del cuerpo en cm, consultada el 2026-11-09. Publicada en pulgadas; convertida a cm (2,54) y redondeada a 1 decimal.",
+  "verified": true
+}

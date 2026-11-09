@@ -1,6 +1,9 @@
 # Motor del probador
 
-Servicio en Python que hace dos cosas:
+Motor de referencia en Python. La app no lo llama: lleva dentro un modelo
+del cuerpo generado a partir de este motor y una copia del motor de tallas
+(ver `docs/decisiones.md`). Este servicio sigue sirviendo para calibrar,
+validar y, si algún día hace falta, como API. Hace dos cosas:
 
 1. **Maniquí a partir de medidas.** Ajusta el modelo de cuerpo
    [Anny](https://pypi.org/project/anny/) a las medidas del usuario y devuelve
@@ -101,3 +104,5 @@ una sin la otra y sin pasar los tests marcados como `slow`.
 | `scripts/evaluate_body_fit.py` | Mide la precisión y el tiempo del ajuste |
 | `scripts/render_body.py` | Dibuja el maniquí de frente y de perfil en un PNG |
 | `scripts/export_schema.py` | Regenera `data/catalog/schema.json` |
+| `scripts/build_mobile_model.py` | Genera el maniquí que lleva la app (en GitHub Actions, workflow «Maniquí para el móvil») |
+| `scripts/export_golden.py` | Casos de referencia para que el motor de la app calcule igual que este |

@@ -3,6 +3,66 @@
 Registro de decisiones, la más reciente arriba. Cada una dice qué se
 decidió, por qué y qué la haría cambiar.
 
+## 2026-11-09 · El maniquí se calcula en el móvil, sin servidor
+
+**Decisión.** La app no llama al motor de Python. Lleva dentro un modelo
+lineal del cuerpo (`app/assets/models/body-model.bin`, 3,7 MB) que genera
+`engine/scripts/build_mobile_model.py` en GitHub Actions:
+
+* ~2.250 cuerpos de Anny (fenotipo + cambios locales al azar) medidos con
+  clad-body (ISO 8559-1);
+* forma = malla media + 40 componentes principales;
+* una gaussiana conjunta por base de cuerpo sobre [medidas, alturas de
+  referencia, coeficientes]. Con las medidas que da el usuario, la media
+  condicionada da la forma del maniquí y estima las que faltan con su error.
+
+**Por qué.** Coste cero aunque la usen miles de personas, funciona sin
+conexión, no hace falta ninguna cuenta en la nube y las medidas del cuerpo
+nunca salen del móvil (el dato más delicado de la app).
+
+**Precisión** (110 cuerpos apartados por base, dadas las 6 medidas básicas;
+`engine/reports/body-model.json`): 10 mm de error medio por vértice;
+contorno de la malla a 0,3-0,8 cm en pecho y cintura y 1,6-2,5 cm en cadera.
+Medidas estimadas: muslo ±2,4 cm, hombros ±1,6-2,1, manga ±2,0, largo de
+torso ±0,8, contorno de cinturilla ±0,6-0,8. La recomendación de talla usa
+las medidas que da el usuario tal cual; la malla solo se enseña.
+
+**Revisar si** hace falta más precisión en la malla (por ejemplo, para
+simular tela): entonces se despliega la API de `engine/` (ya preparada para
+Cloud Run) y la app la usa cuando haya conexión.
+
+## 2026-11-09 · El motor de tallas, también en TypeScript
+
+**Decisión.** `app/src/core/fit.ts` es una copia del motor de Python. Los
+dos se comparan en 620 casos generados por `engine/scripts/export_golden.py`
+(mismas tallas, puntuaciones y textos). El CI del motor falla si cambia el
+motor y no se regeneran los casos.
+
+**Por qué.** Recomendar sin servidor. Python sigue siendo la referencia:
+cualquier cambio de calibración se hace allí y se copia.
+
+## 2026-11-09 · Catálogo compartido en Supabase (París)
+
+**Decisión.** Proyecto `probador` en Supabase, región `eu-west-3`, plan
+gratuito. Dos tablas: `garments` (lectura pública de lo publicado, sin
+escritura desde la app) y `garment_submissions` (cualquiera envía, nadie lo
+lee desde la app; entra como pendiente). Seguridad por fila comprobada con
+el rol `anon`. La app lleva además el catálogo dentro y funciona sin él.
+
+**Ojo.** En el plan gratuito el proyecto se pausa tras una semana sin uso;
+la app sigue funcionando con el catálogo incluido. Con usuarios reales,
+pasar al plan Pro (25 $/mes).
+
+## 2026-11-09 · Guías de tallas oficiales transcritas, sin extracción automática
+
+**Decisión.** El catálogo inicial son 17 guías de tallas (medidas del cuerpo)
+publicadas por Levi's, Mango, New Balance, Nike, Primark y ASOS, copiadas a
+mano de sus páginas con la URL y la fecha en cada ficha. No hay ningún
+programa que recorra webs de tiendas.
+
+**Por qué.** Ver «Catálogo sin copiar webs de tiendas». Una guía por marca y
+categoría cubre todas sus prendas de ese tipo, con muy pocos datos.
+
 ## 2026-11-09 · Catálogo sin copiar webs de tiendas
 
 **Decisión.** El catálogo se alimenta de feeds de afiliación, guías de tallas

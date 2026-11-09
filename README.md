@@ -11,36 +11,71 @@ El documento de requisitos y arquitectura está en Claude:
 
 ## Estructura
 
-| Carpeta | Qué hay | Estado |
-| --- | --- | --- |
-| [`engine/`](engine/) | Motor en Python: maniquí a partir de medidas y recomendación de talla, servido como API | Fase 0 y 1 en marcha |
-| [`data/`](data/) | Formato del catálogo de prendas y prendas de ejemplo | Formato definido |
-| [`docs/`](docs/) | Decisiones técnicas, calibración pendiente y estrategia de datos | Vivo |
-| `app/` | App móvil (Expo, React Native) | Fase 2 |
+| Carpeta | Qué hay |
+| --- | --- |
+| [`app/`](app/) | App (Expo, React Native, TypeScript) para iOS, Android y web. Calcula el maniquí y la talla en el propio móvil |
+| [`engine/`](engine/) | Motor de referencia en Python: ajuste del maniquí con Anny y clad-body, motor de tallas, API y generador del modelo del móvil |
+| [`data/catalog/`](data/catalog/) | Formato de las prendas, guías de tallas reales de marcas y prendas de ejemplo |
+| [`supabase/`](supabase/) | Base de datos del catálogo compartido: migraciones y datos iniciales |
+| [`docs/`](docs/) | Decisiones técnicas, calibración pendiente y estrategia de datos |
 
 ## Cómo funciona, en corto
 
-1. **Maniquí.** El modelo paramétrico de cuerpo [Anny](https://pypi.org/project/anny/)
-   (Apache 2.0) se ajusta a las medidas del usuario resolviendo un problema de
-   mínimos cuadrados (Levenberg-Marquardt) sobre medidas derivables de
-   [clad-body](https://pypi.org/project/clad-body/) (Apache 2.0, ISO 8559-1),
-   y se corrige al final con la medición de referencia ISO.
+```text
+medidas del usuario ──▶ maniquí (en el móvil) ──▶ medidas completas ──▶ talla + explicación
+                         gaussiana medidas↔forma     dadas + estimadas      holgura zona a zona
+```
+
+1. **Maniquí.** `engine/scripts/build_mobile_model.py` genera miles de cuerpos
+   con [Anny](https://pypi.org/project/anny/) (Apache 2.0), los mide con
+   [clad-body](https://pypi.org/project/clad-body/) (Apache 2.0, ISO 8559-1) y
+   resume la relación entre medidas y forma en un binario de 3,7 MB que va
+   dentro de la app. Con las medidas que da el usuario, el móvil calcula la
+   forma más probable y estima las medidas que faltan.
 2. **Holguras.** Para cada talla y zona, holgura = prenda − cuerpo, comparada
    con un intervalo ideal según categoría, corte, elasticidad del tejido y
    preferencia del usuario (ceñido, normal, holgado).
 3. **Recomendación.** Cada talla suma una penalización por zona (apretar pesa
    más que sobrar); gana la menor y se explica en español.
+4. **Privacidad.** Las medidas del cuerpo no salen del dispositivo. Internet
+   solo se usa para el catálogo compartido de prendas.
 
 ## Desarrollo
+
+App:
+
+```bash
+cd app
+npm ci
+npm test              # paridad con el motor de Python, maniquí, catálogo
+npm run typecheck
+npx expo start        # escanea el QR con Expo Go
+npm run catalog       # tras añadir guías en data/catalog/marcas
+```
+
+Motor (Python 3.12):
 
 ```bash
 cd engine
 uv venv --python 3.12 .venv && source .venv/bin/activate
+uv pip install --index-url https://download.pytorch.org/whl/cpu torch
 uv pip install -e ".[dev]"
-pytest -m "not slow"      # sin modelo 3D, en un segundo
-pytest                    # completo; la primera vez Anny tarda ~1 min en preparar sus datos
-uvicorn probador.api:app --reload    # documentación interactiva en /docs
+pytest -m "not slow"                  # sin modelo 3D, en un segundo
+python scripts/export_golden.py       # tras tocar el motor de tallas
 ```
+
+El modelo del maniquí se regenera en GitHub Actions (workflow «Maniquí para
+el móvil», unos 15 minutos) y se guarda solo en la rama.
+
+## Datos
+
+- **Catálogo incluido:** 17 guías de tallas oficiales de Levi's, Mango, New
+  Balance, Nike, Primark y ASOS, cada una con su fuente.
+- **Catálogo compartido:** Supabase (proyecto `probador`, París). Lectura
+  pública de lo publicado; las aportaciones de usuarios entran pendientes de
+  revisión. Ver [`supabase/`](supabase/).
+- No se extraen datos automáticamente de webs de tiendas
+  ([por qué](docs/datos.md)).
 
 ## Licencias de terceros
 

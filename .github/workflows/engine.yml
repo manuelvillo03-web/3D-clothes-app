@@ -28,6 +28,12 @@ jobs:
           pip install -e ".[dev]"
       - name: Tests
         run: pytest -m "not slow" -q
+      - name: Casos de paridad de la app al día
+        run: |
+          python scripts/export_golden.py --out /tmp/golden.json
+          cmp /tmp/golden.json ../app/src/core/__fixtures__/golden.json || {
+            echo "El motor ha cambiado: ejecuta python engine/scripts/export_golden.py y actualiza app/src/core";
+            exit 1; }
 
   maniqui:
     name: Tests del maniquí

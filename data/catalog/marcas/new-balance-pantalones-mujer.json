@@ -1,0 +1,106 @@
+{
+  "id": "new-balance-pantalones-mujer",
+  "brand": "New Balance",
+  "name": "Pantalones y mallas de mujer (guía de tallas)",
+  "audience": "women",
+  "category": "trousers",
+  "cut": "regular",
+  "chart_type": "body",
+  "rise": "mid",
+  "sizes": [
+    {
+      "label": "XXS",
+      "measurements": {
+        "waist": [
+          56,
+          61
+        ],
+        "hip": [
+          79,
+          84
+        ]
+      }
+    },
+    {
+      "label": "XS",
+      "measurements": {
+        "waist": [
+          61,
+          66
+        ],
+        "hip": [
+          84,
+          89
+        ]
+      }
+    },
+    {
+      "label": "S",
+      "measurements": {
+        "waist": [
+          66,
+          71
+        ],
+        "hip": [
+          89,
+          97
+        ]
+      }
+    },
+    {
+      "label": "M",
+      "measurements": {
+        "waist": [
+          71,
+          79
+        ],
+        "hip": [
+          97,
+          102
+        ]
+      }
+    },
+    {
+      "label": "L",
+      "measurements": {
+        "waist": [
+          79,
+          86
+        ],
+        "hip": [
+          102,
+          109
+        ]
+      }
+    },
+    {
+      "label": "XL",
+      "measurements": {
+        "waist": [
+          86,
+          97
+        ],
+        "hip": [
+          109,
+          119
+        ]
+      }
+    },
+    {
+      "label": "2XL",
+      "measurements": {
+        "waist": [
+          97,
+          107
+        ],
+        "hip": [
+          119,
+          127
+        ]
+      }
+    }
+  ],
+  "url": "https://www.newbalance.com/es/customercare-sizeguide-apparel.html",
+  "source": "Guía de tallas oficial de New Balance (https://www.newbalance.com/es/customercare-sizeguide-apparel.html), medidas del cuerpo en cm, consultada el 2026-11-09.",
+  "verified": true
+}

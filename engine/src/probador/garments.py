@@ -25,6 +25,7 @@ Cut = Literal["slim", "regular", "relaxed", "oversize"]
 ChartType = Literal["garment", "body"]
 Sleeve = Literal["none", "short", "long"]
 Rise = Literal["low", "mid", "high"]
+Audience = Literal["men", "women", "unisex"]
 
 TOPS: frozenset[str] = frozenset(
     {"tshirt", "shirt", "polo", "sweater", "hoodie", "jacket", "coat", "dress"}
@@ -104,6 +105,8 @@ class Garment(BaseModel):
     barcodes: list[str] = Field(default_factory=list)
     source: str | None = None
     verified: bool = False
+    # Público al que va la prenda (para filtrar el catálogo); no afecta al ajuste.
+    audience: Audience | None = None
 
     @model_validator(mode="after")
     def _check(self) -> "Garment":

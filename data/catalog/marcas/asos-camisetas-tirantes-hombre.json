@@ -1,0 +1,87 @@
+{
+  "id": "asos-camisetas-tirantes-hombre",
+  "brand": "ASOS",
+  "name": "Camisetas de tirantes de hombre (guía de tallas)",
+  "audience": "men",
+  "category": "tshirt",
+  "cut": "regular",
+  "chart_type": "body",
+  "sleeve": "none",
+  "sizes": [
+    {
+      "label": "XXS",
+      "measurements": {
+        "chest": [
+          81,
+          86
+        ]
+      }
+    },
+    {
+      "label": "XS",
+      "measurements": {
+        "chest": [
+          86,
+          91
+        ]
+      }
+    },
+    {
+      "label": "S",
+      "measurements": {
+        "chest": [
+          91,
+          96
+        ]
+      }
+    },
+    {
+      "label": "M",
+      "measurements": {
+        "chest": [
+          96,
+          101
+        ]
+      }
+    },
+    {
+      "label": "L",
+      "measurements": {
+        "chest": [
+          101,
+          106
+        ]
+      }
+    },
+    {
+      "label": "XL",
+      "measurements": {
+        "chest": [
+          106,
+          111
+        ]
+      }
+    },
+    {
+      "label": "XXL",
+      "measurements": {
+        "chest": [
+          111,
+          116
+        ]
+      }
+    },
+    {
+      "label": "XXXL",
+      "measurements": {
+        "chest": [
+          116,
+          121
+        ]
+      }
+    }
+  ],
+  "url": "https://www.asos.com/us/discover/size-charts/men/vests/",
+  "source": "Guía de tallas oficial de ASOS (https://www.asos.com/us/discover/size-charts/men/vests/), medidas del cuerpo en cm, consultada el 2026-11-09.",
+  "verified": true
+}
