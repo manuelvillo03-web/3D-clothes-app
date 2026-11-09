@@ -1,0 +1,64 @@
+{
+  "id": "mango-pantalones-mujer",
+  "brand": "Mango",
+  "name": "Pantalones de mujer (guía de tallas)",
+  "audience": "women",
+  "category": "trousers",
+  "cut": "regular",
+  "chart_type": "body",
+  "rise": "mid",
+  "sizes": [
+    {
+      "label": "XXS",
+      "measurements": {
+        "waist": 59,
+        "hip": 86
+      }
+    },
+    {
+      "label": "XS",
+      "measurements": {
+        "waist": 62,
+        "hip": 90
+      }
+    },
+    {
+      "label": "S",
+      "measurements": {
+        "waist": 66,
+        "hip": 94
+      }
+    },
+    {
+      "label": "M",
+      "measurements": {
+        "waist": 72,
+        "hip": 100
+      }
+    },
+    {
+      "label": "L",
+      "measurements": {
+        "waist": 78,
+        "hip": 106
+      }
+    },
+    {
+      "label": "XL",
+      "measurements": {
+        "waist": 85,
+        "hip": 112
+      }
+    },
+    {
+      "label": "XXL",
+      "measurements": {
+        "waist": 92,
+        "hip": 118
+      }
+    }
+  ],
+  "url": "https://shop.mango.com/gt/es/size-guide",
+  "source": "Guía de tallas oficial de Mango (https://shop.mango.com/gt/es/size-guide), medidas del cuerpo en cm, consultada el 2026-11-09.",
+  "verified": true
+}

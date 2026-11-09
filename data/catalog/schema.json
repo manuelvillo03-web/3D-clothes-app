@@ -214,6 +214,23 @@
       "default": false,
       "title": "Verified",
       "type": "boolean"
+    },
+    "audience": {
+      "anyOf": [
+        {
+          "enum": [
+            "men",
+            "women",
+            "unisex"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Audience"
     }
   },
   "required": [

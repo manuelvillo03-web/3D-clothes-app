@@ -1,0 +1,133 @@
+{
+  "id": "new-balance-camisetas-hombre",
+  "brand": "New Balance",
+  "name": "Camisetas y sudaderas de hombre (guía de tallas)",
+  "audience": "men",
+  "category": "tshirt",
+  "cut": "regular",
+  "chart_type": "body",
+  "sizes": [
+    {
+      "label": "XS",
+      "measurements": {
+        "chest": [
+          84,
+          89
+        ],
+        "waist": [
+          69,
+          74
+        ],
+        "hip": [
+          81,
+          86
+        ]
+      }
+    },
+    {
+      "label": "S",
+      "measurements": {
+        "chest": [
+          89,
+          97
+        ],
+        "waist": [
+          74,
+          79
+        ],
+        "hip": [
+          86,
+          94
+        ]
+      }
+    },
+    {
+      "label": "M",
+      "measurements": {
+        "chest": [
+          97,
+          104
+        ],
+        "waist": [
+          79,
+          86
+        ],
+        "hip": [
+          94,
+          102
+        ]
+      }
+    },
+    {
+      "label": "L",
+      "measurements": {
+        "chest": [
+          104,
+          112
+        ],
+        "waist": [
+          86,
+          94
+        ],
+        "hip": [
+          102,
+          109
+        ]
+      }
+    },
+    {
+      "label": "XL",
+      "measurements": {
+        "chest": [
+          112,
+          122
+        ],
+        "waist": [
+          94,
+          104
+        ],
+        "hip": [
+          109,
+          117
+        ]
+      }
+    },
+    {
+      "label": "2XL",
+      "measurements": {
+        "chest": [
+          122,
+          135
+        ],
+        "waist": [
+          104,
+          117
+        ],
+        "hip": [
+          117,
+          127
+        ]
+      }
+    },
+    {
+      "label": "3XL",
+      "measurements": {
+        "chest": [
+          135,
+          145
+        ],
+        "waist": [
+          117,
+          127
+        ],
+        "hip": [
+          127,
+          137
+        ]
+      }
+    }
+  ],
+  "url": "https://www.newbalance.com/es/customercare-sizeguide-apparel.html",
+  "source": "Guía de tallas oficial de New Balance (https://www.newbalance.com/es/customercare-sizeguide-apparel.html), medidas del cuerpo en cm, consultada el 2026-11-09. La página en español usa XP/P/M/G/XG; aquí se muestran como XS/S/M/L/XL.",
+  "verified": true
+}

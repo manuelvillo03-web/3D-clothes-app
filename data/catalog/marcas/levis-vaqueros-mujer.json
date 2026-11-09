@@ -1,0 +1,92 @@
+{
+  "id": "levis-vaqueros-mujer",
+  "brand": "Levi's",
+  "name": "Vaqueros y pantalones de mujer (guía de tallas)",
+  "audience": "women",
+  "category": "jeans",
+  "cut": "regular",
+  "chart_type": "body",
+  "rise": "mid",
+  "sizes": [
+    {
+      "label": "W24",
+      "measurements": {
+        "waist": 64,
+        "hip": 86
+      }
+    },
+    {
+      "label": "W25",
+      "measurements": {
+        "waist": 66,
+        "hip": 89
+      }
+    },
+    {
+      "label": "W26",
+      "measurements": {
+        "waist": 69,
+        "hip": 91.5
+      }
+    },
+    {
+      "label": "W27",
+      "measurements": {
+        "waist": 72,
+        "hip": 94
+      }
+    },
+    {
+      "label": "W28",
+      "measurements": {
+        "waist": 74,
+        "hip": 96.5
+      }
+    },
+    {
+      "label": "W29",
+      "measurements": {
+        "waist": 77,
+        "hip": 99
+      }
+    },
+    {
+      "label": "W30",
+      "measurements": {
+        "waist": 79,
+        "hip": 101
+      }
+    },
+    {
+      "label": "W31",
+      "measurements": {
+        "waist": 83,
+        "hip": 105
+      }
+    },
+    {
+      "label": "W32",
+      "measurements": {
+        "waist": 87,
+        "hip": 109
+      }
+    },
+    {
+      "label": "W33",
+      "measurements": {
+        "waist": 90,
+        "hip": 113
+      }
+    },
+    {
+      "label": "W34",
+      "measurements": {
+        "waist": 96,
+        "hip": 118
+      }
+    }
+  ],
+  "url": "https://www.levi.com/DE/en/info/sizechart",
+  "source": "Guía de tallas oficial de Levi's (https://www.levi.com/DE/en/info/sizechart), medidas del cuerpo en cm, consultada el 2026-11-09.",
+  "verified": true
+}

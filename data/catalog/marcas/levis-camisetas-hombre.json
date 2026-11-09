@@ -1,0 +1,133 @@
+{
+  "id": "levis-camisetas-hombre",
+  "brand": "Levi's",
+  "name": "Camisetas y partes de arriba de hombre (guía de tallas)",
+  "audience": "men",
+  "category": "tshirt",
+  "cut": "regular",
+  "chart_type": "body",
+  "sizes": [
+    {
+      "label": "XS",
+      "measurements": {
+        "chest": [
+          81.3,
+          86.4
+        ],
+        "waist": [
+          66,
+          71.1
+        ],
+        "hip": [
+          81.3,
+          86.4
+        ]
+      }
+    },
+    {
+      "label": "S",
+      "measurements": {
+        "chest": [
+          88.9,
+          94
+        ],
+        "waist": [
+          73.7,
+          78.7
+        ],
+        "hip": [
+          89,
+          94
+        ]
+      }
+    },
+    {
+      "label": "M",
+      "measurements": {
+        "chest": [
+          96.5,
+          101.6
+        ],
+        "waist": [
+          81.3,
+          86.4
+        ],
+        "hip": [
+          96.5,
+          101.6
+        ]
+      }
+    },
+    {
+      "label": "L",
+      "measurements": {
+        "chest": [
+          104.1,
+          109.2
+        ],
+        "waist": [
+          88.9,
+          94
+        ],
+        "hip": [
+          104.1,
+          109.2
+        ]
+      }
+    },
+    {
+      "label": "XL",
+      "measurements": {
+        "chest": [
+          111.8,
+          116.8
+        ],
+        "waist": [
+          96.5,
+          101.6
+        ],
+        "hip": [
+          111.8,
+          116.8
+        ]
+      }
+    },
+    {
+      "label": "XXL",
+      "measurements": {
+        "chest": [
+          119.4,
+          124.5
+        ],
+        "waist": [
+          104.1,
+          109.2
+        ],
+        "hip": [
+          119.4,
+          124.5
+        ]
+      }
+    },
+    {
+      "label": "3XL",
+      "measurements": {
+        "chest": [
+          127,
+          132.1
+        ],
+        "waist": [
+          111.8,
+          116.8
+        ],
+        "hip": [
+          127,
+          132.1
+        ]
+      }
+    }
+  ],
+  "url": "https://www.levi.com/DE/en/info/sizechart",
+  "source": "Guía de tallas oficial de Levi's (https://www.levi.com/DE/en/info/sizechart), medidas del cuerpo en cm, consultada el 2026-11-09.",
+  "verified": true
+}

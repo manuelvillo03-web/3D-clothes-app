@@ -1,0 +1,103 @@
+{
+  "id": "levis-vaqueros-hombre",
+  "brand": "Levi's",
+  "name": "Vaqueros y pantalones de hombre (guía de tallas)",
+  "audience": "men",
+  "category": "jeans",
+  "cut": "regular",
+  "chart_type": "body",
+  "rise": "mid",
+  "sizes": [
+    {
+      "label": "W28",
+      "measurements": {
+        "waist": 71.1,
+        "hip": 87.5,
+        "thigh": 52
+      }
+    },
+    {
+      "label": "W29",
+      "measurements": {
+        "waist": 73.7,
+        "hip": 90.2,
+        "thigh": 53.3
+      }
+    },
+    {
+      "label": "W30",
+      "measurements": {
+        "waist": 76.2,
+        "hip": 92.7,
+        "thigh": 54.6
+      }
+    },
+    {
+      "label": "W31",
+      "measurements": {
+        "waist": 78.7,
+        "hip": 95.3,
+        "thigh": 56
+      }
+    },
+    {
+      "label": "W32",
+      "measurements": {
+        "waist": 81.3,
+        "hip": 97.8,
+        "thigh": 57.2
+      }
+    },
+    {
+      "label": "W33",
+      "measurements": {
+        "waist": 83.8,
+        "hip": 100.3,
+        "thigh": 58.4
+      }
+    },
+    {
+      "label": "W34",
+      "measurements": {
+        "waist": 86.4,
+        "hip": 103,
+        "thigh": 59.7
+      }
+    },
+    {
+      "label": "W36",
+      "measurements": {
+        "waist": 91.4,
+        "hip": 108,
+        "thigh": 62.2
+      }
+    },
+    {
+      "label": "W38",
+      "measurements": {
+        "waist": 96.5,
+        "hip": 113,
+        "thigh": 64
+      }
+    },
+    {
+      "label": "W40",
+      "measurements": {
+        "waist": 101.6,
+        "hip": 118,
+        "thigh": 66.5
+      }
+    },
+    {
+      "label": "W42",
+      "measurements": {
+        "waist": 106.7,
+        "hip": 123.2,
+        "thigh": 68.3
+      }
+    }
+  ],
+  "url": "https://www.levi.com/DE/en/info/sizechart",
+  "source": "Guía de tallas oficial de Levi's (https://www.levi.com/DE/en/info/sizechart), medidas del cuerpo en cm, consultada el 2026-11-09. Tallas numéricas W (cintura); el largo L va aparte.",
+  "verified": true
+}

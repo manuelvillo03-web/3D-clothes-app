@@ -1,0 +1,92 @@
+{
+  "id": "levis-faldas-mujer",
+  "brand": "Levi's",
+  "name": "Faldas (guía de tallas)",
+  "audience": "women",
+  "category": "skirt",
+  "cut": "regular",
+  "chart_type": "body",
+  "rise": "mid",
+  "sizes": [
+    {
+      "label": "24",
+      "measurements": {
+        "waist": 64,
+        "hip": 86
+      }
+    },
+    {
+      "label": "25",
+      "measurements": {
+        "waist": 66,
+        "hip": 89
+      }
+    },
+    {
+      "label": "26",
+      "measurements": {
+        "waist": 69,
+        "hip": 91.5
+      }
+    },
+    {
+      "label": "27",
+      "measurements": {
+        "waist": 72,
+        "hip": 94
+      }
+    },
+    {
+      "label": "28",
+      "measurements": {
+        "waist": 74,
+        "hip": 96.5
+      }
+    },
+    {
+      "label": "29",
+      "measurements": {
+        "waist": 77,
+        "hip": 99
+      }
+    },
+    {
+      "label": "30",
+      "measurements": {
+        "waist": 79,
+        "hip": 101
+      }
+    },
+    {
+      "label": "31",
+      "measurements": {
+        "waist": 83,
+        "hip": 105
+      }
+    },
+    {
+      "label": "32",
+      "measurements": {
+        "waist": 87,
+        "hip": 109
+      }
+    },
+    {
+      "label": "33",
+      "measurements": {
+        "waist": 90,
+        "hip": 113
+      }
+    },
+    {
+      "label": "34",
+      "measurements": {
+        "waist": 96,
+        "hip": 118
+      }
+    }
+  ],
+  "url": "https://www.levi.com/DE/en/info/sizechart",
+  "source": "Guía de tallas oficial de Levi's (https://www.levi.com/DE/en/info/sizechart), medidas del cuerpo en cm, consultada el 2026-11-09.",
+  "verified": true
+}
