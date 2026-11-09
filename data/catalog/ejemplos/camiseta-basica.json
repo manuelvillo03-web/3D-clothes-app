@@ -1,0 +1,17 @@
+{
+  "id": "ejemplo-camiseta-basica",
+  "brand": "Marca de ejemplo",
+  "name": "Camiseta básica de algodón",
+  "category": "tshirt",
+  "cut": "regular",
+  "chart_type": "garment",
+  "composition": { "algodon": 100 },
+  "sizes": [
+    { "label": "S", "measurements": { "chest_flat": 50, "length": 68, "shoulder_width": 43 } },
+    { "label": "M", "measurements": { "chest_flat": 53, "length": 70, "shoulder_width": 45 } },
+    { "label": "L", "measurements": { "chest_flat": 56, "length": 72, "shoulder_width": 47 } },
+    { "label": "XL", "measurements": { "chest_flat": 59, "length": 74, "shoulder_width": 49 } }
+  ],
+  "source": "Inventada para pruebas",
+  "verified": false
+}

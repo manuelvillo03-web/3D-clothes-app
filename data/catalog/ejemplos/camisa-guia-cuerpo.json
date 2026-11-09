@@ -1,0 +1,17 @@
+{
+  "id": "ejemplo-camisa-guia-cuerpo",
+  "brand": "Marca de ejemplo",
+  "name": "Camisa Oxford (solo guía de tallas)",
+  "category": "shirt",
+  "cut": "regular",
+  "chart_type": "body",
+  "composition": { "algodon": 100 },
+  "sizes": [
+    { "label": "S", "measurements": { "chest": [88, 94], "waist": [76, 82], "neck": [37, 38] } },
+    { "label": "M", "measurements": { "chest": [94, 100], "waist": [82, 88], "neck": [39, 40] } },
+    { "label": "L", "measurements": { "chest": [100, 106], "waist": [88, 94], "neck": [41, 42] } },
+    { "label": "XL", "measurements": { "chest": [106, 112], "waist": [94, 100], "neck": [43, 44] } }
+  ],
+  "source": "Inventada para pruebas",
+  "verified": false
+}

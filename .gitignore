@@ -1,0 +1,24 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.cache/
+*.egg-info/
+dist/
+build/
+
+# Node / Expo (fase 2)
+node_modules/
+.expo/
+web-build/
+
+# Salidas locales
+*.glb
+*.log
+.env
+.env.*
+!.env.example
+
+# Sistema
+.DS_Store

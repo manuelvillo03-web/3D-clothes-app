@@ -1,0 +1,228 @@
+{
+  "$defs": {
+    "Price": {
+      "properties": {
+        "amount": {
+          "minimum": 0,
+          "title": "Amount",
+          "type": "number"
+        },
+        "currency": {
+          "default": "EUR",
+          "title": "Currency",
+          "type": "string"
+        }
+      },
+      "required": [
+        "amount"
+      ],
+      "title": "Price",
+      "type": "object"
+    },
+    "Size": {
+      "properties": {
+        "label": {
+          "maxLength": 20,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "measurements": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "maxItems": 2,
+                "minItems": 2,
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "type": "array"
+              }
+            ]
+          },
+          "title": "Measurements",
+          "type": "object"
+        }
+      },
+      "required": [
+        "label",
+        "measurements"
+      ],
+      "title": "Size",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Id"
+    },
+    "brand": {
+      "title": "Brand",
+      "type": "string"
+    },
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "category": {
+      "enum": [
+        "tshirt",
+        "shirt",
+        "polo",
+        "sweater",
+        "hoodie",
+        "jacket",
+        "coat",
+        "dress",
+        "jeans",
+        "trousers",
+        "shorts",
+        "skirt"
+      ],
+      "title": "Category",
+      "type": "string"
+    },
+    "cut": {
+      "default": "regular",
+      "enum": [
+        "slim",
+        "regular",
+        "relaxed",
+        "oversize"
+      ],
+      "title": "Cut",
+      "type": "string"
+    },
+    "chart_type": {
+      "default": "garment",
+      "enum": [
+        "garment",
+        "body"
+      ],
+      "title": "Chart Type",
+      "type": "string"
+    },
+    "sleeve": {
+      "anyOf": [
+        {
+          "enum": [
+            "none",
+            "short",
+            "long"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Sleeve"
+    },
+    "rise": {
+      "anyOf": [
+        {
+          "enum": [
+            "low",
+            "mid",
+            "high"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Rise"
+    },
+    "composition": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "title": "Composition",
+      "type": "object"
+    },
+    "sizes": {
+      "items": {
+        "$ref": "#/$defs/Size"
+      },
+      "minItems": 1,
+      "title": "Sizes",
+      "type": "array"
+    },
+    "url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Url"
+    },
+    "price": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Price"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "barcodes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Barcodes",
+      "type": "array"
+    },
+    "source": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source"
+    },
+    "verified": {
+      "default": false,
+      "title": "Verified",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "brand",
+    "name",
+    "category",
+    "sizes"
+  ],
+  "title": "Prenda",
+  "type": "object",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

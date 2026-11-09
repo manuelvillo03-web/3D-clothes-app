@@ -1,0 +1,18 @@
+{
+  "id": "ejemplo-vaquero-recto",
+  "brand": "Marca de ejemplo",
+  "name": "Vaquero recto",
+  "category": "jeans",
+  "cut": "regular",
+  "chart_type": "garment",
+  "rise": "mid",
+  "composition": { "algodon": 99, "elastano": 1 },
+  "sizes": [
+    { "label": "30", "measurements": { "waist_flat": 40, "hip_flat": 49, "thigh_flat": 29, "inseam": 80, "rise": 26 } },
+    { "label": "32", "measurements": { "waist_flat": 42.5, "hip_flat": 51.5, "thigh_flat": 30.5, "inseam": 81, "rise": 27 } },
+    { "label": "34", "measurements": { "waist_flat": 45, "hip_flat": 54, "thigh_flat": 32, "inseam": 82, "rise": 28 } },
+    { "label": "36", "measurements": { "waist_flat": 47.5, "hip_flat": 56.5, "thigh_flat": 33.5, "inseam": 82, "rise": 29 } }
+  ],
+  "source": "Inventada para pruebas",
+  "verified": false
+}
