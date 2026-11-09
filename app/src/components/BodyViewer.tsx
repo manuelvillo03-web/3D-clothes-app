@@ -100,7 +100,9 @@ export function BodyViewer({ model, vertices, shell = null, height = 420, bodyHe
     };
     const responder = PanResponder.create({
       onStartShouldSetPanResponder: () => false,
-      onMoveShouldSetPanResponder: (_, g) => Math.abs(g.dx) > 6 && Math.abs(g.dx) > Math.abs(g.dy),
+      // En captura: el lienzo 3D de iOS/Android reclama los toques para sí y,
+      // sin esto, el arrastre horizontal no llegaría a girar el maniquí.
+      onMoveShouldSetPanResponderCapture: (_, g) => Math.abs(g.dx) > 6 && Math.abs(g.dx) > Math.abs(g.dy),
       onPanResponderGrant: () => {
         start = current;
       },
