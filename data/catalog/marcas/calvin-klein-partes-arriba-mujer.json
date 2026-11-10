@@ -1,0 +1,90 @@
+{
+  "id": "calvin-klein-partes-arriba-mujer",
+  "brand": "Calvin Klein",
+  "name": "Camisetas, sudaderas y blusas de mujer (guía de tallas)",
+  "audience": "women",
+  "category": "tshirt",
+  "cut": "regular",
+  "chart_type": "body",
+  "sizes": [
+    {
+      "label": "XS",
+      "measurements": {
+        "chest": [
+          83.8,
+          86.4
+        ],
+        "waist": [
+          64.8,
+          67.3
+        ],
+        "hip": [
+          90.2,
+          92.7
+        ]
+      }
+    },
+    {
+      "label": "S",
+      "measurements": {
+        "chest": [
+          88.9,
+          91.4
+        ],
+        "waist": [
+          69.8,
+          72.4
+        ],
+        "hip": [
+          95.2,
+          97.8
+        ]
+      }
+    },
+    {
+      "label": "M",
+      "measurements": {
+        "chest": [
+          94.0,
+          96.5
+        ],
+        "waist": [
+          74.9,
+          77.5
+        ],
+        "hip": [
+          100.3,
+          102.9
+        ]
+      }
+    },
+    {
+      "label": "L",
+      "measurements": {
+        "chest": [
+          99.1,
+          101.6
+        ],
+        "waist": [
+          80.0,
+          82.5
+        ],
+        "hip": [
+          105.4,
+          108.0
+        ]
+      }
+    },
+    {
+      "label": "XL",
+      "measurements": {
+        "chest": 109.2,
+        "waist": 90.2,
+        "hip": 115.6
+      }
+    }
+  ],
+  "url": "https://www.calvinklein.us/en/women-size-guide.html",
+  "source": "Guía de tallas oficial de Calvin Klein (https://www.calvinklein.us/en/women-size-guide.html), medidas del cuerpo en cm, consultada el 2026-11-10. Publicada en pulgadas; convertida a cm (2,54) y redondeada a 1 decimal.",
+  "verified": true
+}

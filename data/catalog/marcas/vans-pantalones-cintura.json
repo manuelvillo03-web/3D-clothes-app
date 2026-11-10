@@ -1,0 +1,184 @@
+{
+  "id": "vans-pantalones-cintura",
+  "brand": "Vans",
+  "name": "Pantalones y vaqueros por talla de cintura (guía de tallas)",
+  "audience": "unisex",
+  "category": "jeans",
+  "cut": "regular",
+  "chart_type": "body",
+  "rise": "mid",
+  "sizes": [
+    {
+      "label": "25",
+      "measurements": {
+        "waist": [
+          62,
+          63.5
+        ],
+        "hip": [
+          80,
+          81.5
+        ]
+      }
+    },
+    {
+      "label": "26",
+      "measurements": {
+        "waist": [
+          65,
+          66
+        ],
+        "hip": [
+          82.5,
+          84
+        ]
+      }
+    },
+    {
+      "label": "27",
+      "measurements": {
+        "waist": [
+          67.5,
+          68.5
+        ],
+        "hip": [
+          85,
+          86.5
+        ]
+      }
+    },
+    {
+      "label": "28",
+      "measurements": {
+        "waist": [
+          70,
+          71
+        ],
+        "hip": [
+          87.5,
+          89
+        ]
+      }
+    },
+    {
+      "label": "29",
+      "measurements": {
+        "waist": [
+          72.5,
+          73.5
+        ],
+        "hip": [
+          90,
+          91.5
+        ]
+      }
+    },
+    {
+      "label": "30",
+      "measurements": {
+        "waist": [
+          75,
+          76
+        ],
+        "hip": [
+          92.5,
+          94
+        ]
+      }
+    },
+    {
+      "label": "31",
+      "measurements": {
+        "waist": [
+          77.5,
+          78.5
+        ],
+        "hip": [
+          95.5,
+          96.5
+        ]
+      }
+    },
+    {
+      "label": "32",
+      "measurements": {
+        "waist": [
+          80,
+          81.5
+        ],
+        "hip": [
+          98,
+          99
+        ]
+      }
+    },
+    {
+      "label": "33",
+      "measurements": {
+        "waist": [
+          82.5,
+          84
+        ],
+        "hip": [
+          100.5,
+          101.5
+        ]
+      }
+    },
+    {
+      "label": "34",
+      "measurements": {
+        "waist": [
+          85,
+          86.5
+        ],
+        "hip": [
+          103,
+          104
+        ]
+      }
+    },
+    {
+      "label": "36",
+      "measurements": {
+        "waist": [
+          90,
+          91.5
+        ],
+        "hip": [
+          108,
+          109
+        ]
+      }
+    },
+    {
+      "label": "38",
+      "measurements": {
+        "waist": [
+          95.5,
+          96.5
+        ],
+        "hip": [
+          113,
+          114.5
+        ]
+      }
+    },
+    {
+      "label": "40",
+      "measurements": {
+        "waist": [
+          100.5,
+          101.5
+        ],
+        "hip": [
+          118,
+          119.5
+        ]
+      }
+    }
+  ],
+  "url": "https://www.vans.com/es-es/ayuda/tabla-de-tallas",
+  "source": "Guía de tallas oficial de Vans (https://www.vans.com/es-es/ayuda/tabla-de-tallas), medidas del cuerpo en cm, consultada el 2026-11-10.",
+  "verified": true
+}

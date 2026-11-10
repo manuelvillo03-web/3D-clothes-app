@@ -1,0 +1,92 @@
+{
+  "id": "vans-partes-arriba",
+  "brand": "Vans",
+  "name": "Camisetas y sudaderas (guía de tallas)",
+  "audience": "unisex",
+  "category": "tshirt",
+  "cut": "regular",
+  "chart_type": "body",
+  "sizes": [
+    {
+      "label": "XS",
+      "measurements": {
+        "chest": [
+          74,
+          81
+        ],
+        "hip": [
+          80,
+          86
+        ]
+      }
+    },
+    {
+      "label": "S",
+      "measurements": {
+        "chest": [
+          84,
+          91
+        ],
+        "hip": [
+          88,
+          94
+        ]
+      }
+    },
+    {
+      "label": "M",
+      "measurements": {
+        "chest": [
+          94,
+          102
+        ],
+        "hip": [
+          95,
+          102
+        ]
+      }
+    },
+    {
+      "label": "L",
+      "measurements": {
+        "chest": [
+          104,
+          112
+        ],
+        "hip": [
+          103,
+          109
+        ]
+      }
+    },
+    {
+      "label": "XL",
+      "measurements": {
+        "chest": [
+          114,
+          122
+        ],
+        "hip": [
+          113,
+          119
+        ]
+      }
+    },
+    {
+      "label": "XXL",
+      "measurements": {
+        "chest": [
+          124,
+          132
+        ],
+        "hip": [
+          122,
+          130
+        ]
+      }
+    }
+  ],
+  "url": "https://www.vans.com/es-es/ayuda/tabla-de-tallas",
+  "source": "Guía de tallas oficial de Vans (https://www.vans.com/es-es/ayuda/tabla-de-tallas), medidas del cuerpo en cm, consultada el 2026-11-10.",
+  "verified": true
+}

@@ -1,13 +1,13 @@
 import { router } from 'expo-router';
 import { useMemo, useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
-import { Button, Card, Chip, H2, Notice, P, Row, Screen, Segmented, TextField } from '../components/ui';
+import { Button, Card, Chip, Notice, Row, Screen, Segmented, TextField, Txt } from '../components/ui';
 import { BOTTOMS, CATEGORIES, CATEGORY_NAMES, CUT_NAMES, CUTS, GARMENT_POINTS, parseGarment, type Category, type ChartType, type RawGarment } from '../core/garments';
 import type { Cut } from '../core/ease';
 import { useCatalog } from '../lib/catalog';
 import { CIRCUMFERENCES, POINT_HELP, parseValue, pointsFor } from '../lib/points';
 import { remoteEnabled, submitGarment } from '../lib/remote';
-import { color, font, radius, space } from '../lib/theme';
+import { color, family, font, radius, space } from '../lib/theme';
 
 interface SizeRow { label: string; values: Record<string, string> }
 
@@ -80,14 +80,14 @@ export default function NuevaPrenda() {
   };
 
   return (
-    <Screen>
-      <P muted>
-        Copia la tabla de medidas de la web de la tienda (o mide la prenda en casa). Con las medidas de la propia
-        prenda la recomendación es mucho más precisa que con una guía por cuerpo.
-      </P>
+    <Screen back title="Añadir una prenda" footer={<Button label="Guardar y ver mi talla" onPress={() => void save()} busy={busy} />}>
+      <Txt tone="muted">
+        Copia la tabla de medidas de la web de la tienda, o mide la prenda en casa. Con las medidas de la propia
+        prenda la recomendación es mucho más precisa que con una guía general.
+      </Txt>
       <Card>
-        <TextField label="Marca" value={brand} onChange={setBrand} placeholder="Ej.: la tienda" />
-        <TextField label="Nombre" value={name} onChange={setName} placeholder="Ej.: camiseta de algodón" />
+        <TextField label="Marca" value={brand} onChange={setBrand} placeholder="La tienda o la marca" />
+        <TextField label="Nombre" value={name} onChange={setName} placeholder="Camiseta de algodón" />
         <Text style={styles.label}>Tipo de prenda</Text>
         <Row wrap>
           {CATEGORIES.map((c) => <Chip key={c} label={CATEGORY_NAMES[c]} selected={c === category} onPress={() => setCategory(c)} />)}
@@ -97,17 +97,17 @@ export default function NuevaPrenda() {
       </Card>
 
       <Card>
-        <H2>¿Qué medidas tienes?</H2>
+        <Txt variant="h2">Qué medidas tienes</Txt>
         <Segmented<ChartType>
           value={chart}
           options={[{ value: 'garment', label: 'De la prenda' }, { value: 'body', label: 'Guía por cuerpo' }]}
           onChange={setChart}
         />
-        <P small muted>
+        <Txt variant="small" tone="muted">
           {chart === 'garment'
             ? 'Lo que mide la prenda extendida, en cm.'
             : 'Las medidas del cuerpo para cada talla. Puedes poner un intervalo, por ejemplo 96-101.'}
-        </P>
+        </Txt>
         {chart === 'garment' ? (
           <Pressable onPress={() => setFlat((f) => !f)} style={styles.toggle} accessibilityRole="checkbox" accessibilityState={{ checked: flat }}>
             <View style={[styles.box, flat && styles.boxOn]} />
@@ -121,7 +121,7 @@ export default function NuevaPrenda() {
       </Card>
 
       <Card>
-        <H2>Tallas</H2>
+        <Txt variant="h2">Tallas</Txt>
         <View style={styles.headRow}>
           <Text style={[styles.colHead, { width: 64 }]}>Talla</Text>
           {points.map((p) => <Text key={p} style={styles.colHead} numberOfLines={2}>{GARMENT_POINTS[p]}</Text>)}
@@ -147,13 +147,17 @@ export default function NuevaPrenda() {
           </View>
         ))}
         <Row>
-          <Button kind="secondary" label="+ Talla" onPress={() => setRows((rs) => [...rs, { label: '', values: {} }])} style={{ flex: 1 }} />
+          <Button kind="secondary" icon="add" label="Talla" onPress={() => setRows((rs) => [...rs, { label: '', values: {} }])} style={{ flex: 1 }} />
           {rows.length > 1 ? (
-            <Button kind="secondary" label="− Quitar última" onPress={() => setRows((rs) => rs.slice(0, -1))} style={{ flex: 1 }} />
+            <Button kind="secondary" icon="remove" label="Quitar última" onPress={() => setRows((rs) => rs.slice(0, -1))} style={{ flex: 1 }} />
           ) : null}
         </Row>
-        <P small muted>{points.map((p) => `${GARMENT_POINTS[p]}: ${POINT_HELP[p] ?? ''}`).join(' · ')}</P>
-        {BOTTOMS.has(category) ? <P small muted>Si la marca da la talla como W32 / L32, la cintura en cm es la medida que importa.</P> : null}
+        <View style={{ gap: 2 }}>
+          {points.map((p) => (
+            <Txt key={p} variant="small" tone="muted"><Text style={styles.term}>{GARMENT_POINTS[p]}.</Text> {POINT_HELP[p] ?? ''}</Txt>
+          ))}
+        </View>
+        {BOTTOMS.has(category) ? <Txt variant="small" tone="muted">Si la marca da la talla como W32 / L32, la cintura en cm es la medida que importa.</Txt> : null}
       </Card>
 
       {remoteEnabled() ? (
@@ -167,22 +171,22 @@ export default function NuevaPrenda() {
       ) : null}
 
       {error ? <Notice tone="warn">{error}</Notice> : null}
-      <Button label="Guardar y ver mi talla" onPress={() => void save()} busy={busy} />
     </Screen>
   );
 }
 
 const styles = StyleSheet.create({
-  label: { fontSize: font.body, fontWeight: '600', color: color.ink },
+  label: { fontSize: font.body, fontFamily: family.semibold, color: color.ink },
+  term: { fontFamily: family.semibold, color: color.ink },
   inline: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   headRow: { flexDirection: 'row', gap: 6, alignItems: 'center' },
-  colHead: { flex: 1, fontSize: font.tiny, color: color.muted, fontWeight: '700', textAlign: 'center' },
+  colHead: { flex: 1, fontSize: font.tiny, color: color.muted, fontFamily: family.semibold, textAlign: 'center' },
   cell: {
-    borderWidth: 1, borderColor: color.line, borderRadius: radius.sm, paddingVertical: 8, paddingHorizontal: 6,
-    fontSize: font.small, color: color.ink, backgroundColor: color.surface, textAlign: 'center', minWidth: 0,
+    borderWidth: 1.5, borderColor: color.line, borderRadius: radius.sm, paddingVertical: 9, paddingHorizontal: 4,
+    fontSize: 17, color: color.ink, backgroundColor: color.surface, textAlign: 'center', minWidth: 0, fontFamily: family.num,
   },
   toggle: { flexDirection: 'row', gap: space.md, alignItems: 'flex-start' },
-  box: { width: 22, height: 22, borderRadius: 5, borderWidth: 2, borderColor: color.accent, marginTop: 1 },
-  boxOn: { backgroundColor: color.accent },
-  toggleText: { flex: 1, fontSize: font.small, color: color.ink, lineHeight: 19 },
+  box: { width: 22, height: 22, borderRadius: 6, borderWidth: 2, borderColor: color.indigo, marginTop: 1 },
+  boxOn: { backgroundColor: color.indigo },
+  toggleText: { flex: 1, fontSize: font.small, color: color.ink, lineHeight: 19, fontFamily: family.body },
 });

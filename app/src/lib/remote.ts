@@ -1,12 +1,14 @@
 /**
  * Catálogo compartido en Supabase.
  *
- * Solo dos cosas, y ninguna lleva datos del cuerpo:
+ * Solo tres cosas, y ninguna lleva datos del cuerpo:
  * - leer las prendas publicadas (revisadas);
- * - enviar una prenda para revisión (entra como «pendiente»).
+ * - enviar una prenda para revisión (entra como «pendiente»);
+ * - si el usuario lo marca, decir cómo le quedó una talla (anónimo).
  * Si no hay conexión o falla, la app sigue con el catálogo que lleva dentro.
  */
 import { SUPABASE_KEY, SUPABASE_URL } from '../config';
+import { ENGINE_VERSION } from '../core/ease';
 import type { RawGarment } from '../core/garments';
 
 const TIMEOUT_MS = 8000;
@@ -44,6 +46,26 @@ export async function submitGarment(garment: RawGarment, note?: string): Promise
     method: 'POST',
     headers: { Prefer: 'return=minimal' },
     body: JSON.stringify({ data: garment, note: note ?? null }),
+  });
+  if (!res.ok) throw new Error(`No se pudo enviar (${res.status})`);
+}
+
+/**
+ * Cómo le quedó una talla a alguien que la compró. Anónimo y voluntario:
+ * la prenda, la talla y la respuesta. Sirve para detectar marcas que tallan
+ * pequeño o grande y afinar las holguras.
+ */
+export async function submitFeedback(f: {
+  garmentId: string; size: string | null; recommended: string | null; verdict: 'small' | 'right' | 'large';
+}): Promise<void> {
+  if (!remoteEnabled() || !f.size) return;
+  const res = await call('fit_feedback', {
+    method: 'POST',
+    headers: { Prefer: 'return=minimal' },
+    body: JSON.stringify({
+      garment_id: f.garmentId, size_label: f.size, recommended_label: f.recommended, verdict: f.verdict,
+      engine_version: ENGINE_VERSION,
+    }),
   });
   if (!res.ok) throw new Error(`No se pudo enviar (${res.status})`);
 }

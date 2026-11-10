@@ -1,9 +1,12 @@
 {
   "name": "probador-app",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "expo-router/entry",
   "dependencies": {
+    "@expo-google-fonts/barlow-condensed": "^0.4.1",
+    "@expo-google-fonts/bricolage-grotesque": "^0.4.1",
     "@expo/metro-runtime": "~58.0.17",
+    "@expo/vector-icons": "^15.0.2",
     "@react-native-async-storage/async-storage": "2.2.0",
     "@react-three/fiber": "^9.8.2",
     "expo": "~58.0.23",

@@ -1,0 +1,78 @@
+{
+  "id": "arcteryx-chaquetas-hombre",
+  "brand": "Arc'teryx",
+  "name": "Chaquetas y camisas de hombre (guía de tallas)",
+  "audience": "men",
+  "category": "jacket",
+  "cut": "regular",
+  "chart_type": "body",
+  "sizes": [
+    {
+      "label": "XXS",
+      "measurements": {
+        "chest": 87,
+        "waist": 71,
+        "hip": 85
+      }
+    },
+    {
+      "label": "XS",
+      "measurements": {
+        "chest": 92,
+        "waist": 76,
+        "hip": 90
+      }
+    },
+    {
+      "label": "S",
+      "measurements": {
+        "chest": 97,
+        "waist": 81,
+        "hip": 95
+      }
+    },
+    {
+      "label": "M",
+      "measurements": {
+        "chest": 102,
+        "waist": 86,
+        "hip": 100
+      }
+    },
+    {
+      "label": "L",
+      "measurements": {
+        "chest": 110,
+        "waist": 94,
+        "hip": 108
+      }
+    },
+    {
+      "label": "XL",
+      "measurements": {
+        "chest": 118,
+        "waist": 102,
+        "hip": 116
+      }
+    },
+    {
+      "label": "XXL",
+      "measurements": {
+        "chest": 128,
+        "waist": 112,
+        "hip": 126
+      }
+    },
+    {
+      "label": "XXXL",
+      "measurements": {
+        "chest": 138,
+        "waist": 128,
+        "hip": 142
+      }
+    }
+  ],
+  "url": "https://arcteryx.com/cz/es/help/sizing/mens/tops",
+  "source": "Guía de tallas oficial de Arc'teryx (https://arcteryx.com/cz/es/help/sizing/mens/tops), medidas del cuerpo en cm, consultada el 2026-11-10.",
+  "verified": true
+}

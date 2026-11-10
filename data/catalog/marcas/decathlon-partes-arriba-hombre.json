@@ -1,0 +1,105 @@
+{
+  "id": "decathlon-partes-arriba-hombre",
+  "brand": "Decathlon",
+  "name": "Partes de arriba de hombre (guía de tallas)",
+  "audience": "men",
+  "category": "tshirt",
+  "cut": "regular",
+  "chart_type": "body",
+  "sizes": [
+    {
+      "label": "XS",
+      "measurements": {
+        "chest": [
+          84.1,
+          87.1
+        ],
+        "waist": [
+          70.1,
+          72.9
+        ]
+      }
+    },
+    {
+      "label": "S",
+      "measurements": {
+        "chest": [
+          87.9,
+          90.9
+        ],
+        "waist": [
+          73.9,
+          77.0
+        ]
+      }
+    },
+    {
+      "label": "M",
+      "measurements": {
+        "chest": [
+          91.9,
+          95.0
+        ],
+        "waist": [
+          78.0,
+          81.0
+        ]
+      }
+    },
+    {
+      "label": "L",
+      "measurements": {
+        "chest": [
+          96.0,
+          103.1
+        ],
+        "waist": [
+          82.0,
+          88.9
+        ]
+      }
+    },
+    {
+      "label": "XL",
+      "measurements": {
+        "chest": [
+          103.9,
+          113.0
+        ],
+        "waist": [
+          89.9,
+          100.1
+        ]
+      }
+    },
+    {
+      "label": "2XL",
+      "measurements": {
+        "chest": [
+          114.0,
+          122.9
+        ],
+        "waist": [
+          101.1,
+          111.0
+        ]
+      }
+    },
+    {
+      "label": "3XL",
+      "measurements": {
+        "chest": [
+          124.0,
+          134.9
+        ],
+        "waist": [
+          112.0,
+          122.9
+        ]
+      }
+    }
+  ],
+  "url": "https://www.decathlon.com/pages/size-guides",
+  "source": "Guía de tallas oficial de Decathlon (https://www.decathlon.com/pages/size-guides), medidas del cuerpo en cm, consultada el 2026-11-10. Publicada en pulgadas; convertida a cm (2,54) y redondeada a 1 decimal.",
+  "verified": true
+}

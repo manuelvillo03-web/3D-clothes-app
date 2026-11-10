@@ -1,0 +1,106 @@
+{
+  "id": "decathlon-pantalones-mujer",
+  "brand": "Decathlon",
+  "name": "Pantalones y mallas de mujer (guía de tallas)",
+  "audience": "women",
+  "category": "trousers",
+  "cut": "regular",
+  "chart_type": "body",
+  "rise": "mid",
+  "sizes": [
+    {
+      "label": "2XS",
+      "measurements": {
+        "hip": [
+          79.0,
+          85.1
+        ],
+        "waist": [
+          59.9,
+          63.0
+        ]
+      }
+    },
+    {
+      "label": "XS",
+      "measurements": {
+        "hip": [
+          85.1,
+          89.9
+        ],
+        "waist": [
+          64.0,
+          68.1
+        ]
+      }
+    },
+    {
+      "label": "S",
+      "measurements": {
+        "hip": [
+          89.9,
+          96.0
+        ],
+        "waist": [
+          69.1,
+          72.9
+        ]
+      }
+    },
+    {
+      "label": "M",
+      "measurements": {
+        "hip": [
+          96.0,
+          102.1
+        ],
+        "waist": [
+          73.9,
+          79.0
+        ]
+      }
+    },
+    {
+      "label": "L",
+      "measurements": {
+        "hip": [
+          102.1,
+          108.0
+        ],
+        "waist": [
+          80.0,
+          86.1
+        ]
+      }
+    },
+    {
+      "label": "XL",
+      "measurements": {
+        "hip": [
+          108.0,
+          114.0
+        ],
+        "waist": [
+          87.1,
+          93.0
+        ]
+      }
+    },
+    {
+      "label": "2XL",
+      "measurements": {
+        "hip": [
+          114.0,
+          119.9
+        ],
+        "waist": [
+          94.0,
+          100.1
+        ]
+      }
+    }
+  ],
+  "url": "https://www.decathlon.com/pages/size-guides",
+  "source": "Guía de tallas oficial de Decathlon (https://www.decathlon.com/pages/size-guides), medidas del cuerpo en cm, consultada el 2026-11-10. Publicada en pulgadas; convertida a cm (2,54) y redondeada a 1 decimal.",
+  "verified": true
+}

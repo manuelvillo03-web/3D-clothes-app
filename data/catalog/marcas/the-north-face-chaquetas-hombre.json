@@ -1,0 +1,118 @@
+{
+  "id": "the-north-face-chaquetas-hombre",
+  "brand": "The North Face",
+  "name": "Chaquetas y partes de arriba de hombre (guía de tallas)",
+  "audience": "men",
+  "category": "jacket",
+  "cut": "regular",
+  "chart_type": "body",
+  "sizes": [
+    {
+      "label": "2XS",
+      "measurements": {
+        "chest": [
+          76,
+          84
+        ],
+        "hip": [
+          79,
+          84
+        ]
+      }
+    },
+    {
+      "label": "XS",
+      "measurements": {
+        "chest": [
+          85,
+          93
+        ],
+        "hip": [
+          85,
+          90
+        ]
+      }
+    },
+    {
+      "label": "S",
+      "measurements": {
+        "chest": [
+          94,
+          100
+        ],
+        "hip": [
+          91,
+          98
+        ]
+      }
+    },
+    {
+      "label": "M",
+      "measurements": {
+        "chest": [
+          100,
+          108
+        ],
+        "hip": [
+          99,
+          105
+        ]
+      }
+    },
+    {
+      "label": "L",
+      "measurements": {
+        "chest": [
+          109,
+          117
+        ],
+        "hip": [
+          106,
+          113
+        ]
+      }
+    },
+    {
+      "label": "XL",
+      "measurements": {
+        "chest": [
+          118,
+          126
+        ],
+        "hip": [
+          114,
+          121
+        ]
+      }
+    },
+    {
+      "label": "2XL",
+      "measurements": {
+        "chest": [
+          127,
+          137
+        ],
+        "hip": [
+          122,
+          130
+        ]
+      }
+    },
+    {
+      "label": "3XL",
+      "measurements": {
+        "chest": [
+          138,
+          148
+        ],
+        "hip": [
+          131,
+          137
+        ]
+      }
+    }
+  ],
+  "url": "https://www.thenorthface.com/help/sizing-charts.html/cctld=www_thenorthface_es",
+  "source": "Guía de tallas oficial de The North Face (https://www.thenorthface.com/help/sizing-charts.html/cctld=www_thenorthface_es), medidas del cuerpo en cm, consultada el 2026-11-10.",
+  "verified": true
+}

@@ -1,0 +1,106 @@
+{
+  "id": "decathlon-pantalones-hombre",
+  "brand": "Decathlon",
+  "name": "Pantalones de hombre (guía de tallas)",
+  "audience": "men",
+  "category": "trousers",
+  "cut": "regular",
+  "chart_type": "body",
+  "rise": "mid",
+  "sizes": [
+    {
+      "label": "XS",
+      "measurements": {
+        "hip": [
+          80.0,
+          85.1
+        ],
+        "waist": [
+          66.0,
+          71.1
+        ]
+      }
+    },
+    {
+      "label": "S",
+      "measurements": {
+        "hip": [
+          86.1,
+          90.9
+        ],
+        "waist": [
+          71.9,
+          77.0
+        ]
+      }
+    },
+    {
+      "label": "M",
+      "measurements": {
+        "hip": [
+          91.9,
+          97.0
+        ],
+        "waist": [
+          78.0,
+          83.1
+        ]
+      }
+    },
+    {
+      "label": "L",
+      "measurements": {
+        "hip": [
+          98.0,
+          103.9
+        ],
+        "waist": [
+          84.1,
+          88.9
+        ]
+      }
+    },
+    {
+      "label": "XL",
+      "measurements": {
+        "hip": [
+          104.9,
+          111.0
+        ],
+        "waist": [
+          89.9,
+          97.0
+        ]
+      }
+    },
+    {
+      "label": "2XL",
+      "measurements": {
+        "hip": [
+          112.0,
+          118.1
+        ],
+        "waist": [
+          98.0,
+          104.9
+        ]
+      }
+    },
+    {
+      "label": "3XL",
+      "measurements": {
+        "hip": [
+          119.1,
+          126.0
+        ],
+        "waist": [
+          105.9,
+          113.0
+        ]
+      }
+    }
+  ],
+  "url": "https://www.decathlon.com/pages/size-guides",
+  "source": "Guía de tallas oficial de Decathlon (https://www.decathlon.com/pages/size-guides), medidas del cuerpo en cm, consultada el 2026-11-10. Publicada en pulgadas; convertida a cm (2,54) y redondeada a 1 decimal.",
+  "verified": true
+}

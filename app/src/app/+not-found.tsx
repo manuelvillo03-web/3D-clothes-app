@@ -1,6 +1,15 @@
-import { Redirect } from 'expo-router';
+import { router } from 'expo-router';
+import { Button, EmptyState, Screen } from '../components/ui';
 
-/** Cualquier ruta desconocida vuelve al inicio (también al abrir la web desde otra ruta). */
 export default function NotFound() {
-  return <Redirect href="/" />;
+  return (
+    <Screen>
+      <EmptyState
+        icon="help-buoy-outline"
+        title="Esta pantalla no existe"
+        body="Puede que el enlace esté mal o que la prenda ya no esté en el catálogo."
+        action={<Button label="Ir al inicio" onPress={() => router.replace('/')} />}
+      />
+    </Screen>
+  );
 }

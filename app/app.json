@@ -3,7 +3,7 @@
     "name": "Probador",
     "slug": "probador",
     "scheme": "probador",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -14,7 +14,7 @@
     "android": {
       "package": "app.probador.android",
       "adaptiveIcon": {
-        "backgroundColor": "#F4EFE8",
+        "backgroundColor": "#1D2257",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
@@ -38,6 +38,8 @@
     ],
     "experiments": {
       "typedRoutes": false
-    }
+    },
+    "backgroundColor": "#1D2257",
+    "description": "Acierta con la talla antes de comprar: un maniquí con tus medidas y las tallas de cada marca, zona a zona."
   }
 }

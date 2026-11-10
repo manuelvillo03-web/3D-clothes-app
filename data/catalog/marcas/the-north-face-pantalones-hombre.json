@@ -1,0 +1,132 @@
+{
+  "id": "the-north-face-pantalones-hombre",
+  "brand": "The North Face",
+  "name": "Pantalones de hombre, talla española (guía de tallas)",
+  "audience": "men",
+  "category": "trousers",
+  "cut": "regular",
+  "chart_type": "body",
+  "rise": "mid",
+  "sizes": [
+    {
+      "label": "38",
+      "measurements": {
+        "waist": [
+          71,
+          76
+        ],
+        "hip": [
+          85,
+          90
+        ]
+      }
+    },
+    {
+      "label": "40",
+      "measurements": {
+        "waist": [
+          77,
+          81
+        ],
+        "hip": [
+          91,
+          97
+        ]
+      }
+    },
+    {
+      "label": "42",
+      "measurements": {
+        "waist": [
+          82,
+          85
+        ],
+        "hip": [
+          97,
+          100
+        ]
+      }
+    },
+    {
+      "label": "44",
+      "measurements": {
+        "waist": [
+          85,
+          89
+        ],
+        "hip": [
+          100,
+          104
+        ]
+      }
+    },
+    {
+      "label": "46",
+      "measurements": {
+        "waist": [
+          89,
+          91
+        ],
+        "hip": [
+          104,
+          108
+        ]
+      }
+    },
+    {
+      "label": "48",
+      "measurements": {
+        "waist": [
+          92,
+          98
+        ],
+        "hip": [
+          108,
+          113
+        ]
+      }
+    },
+    {
+      "label": "50",
+      "measurements": {
+        "waist": [
+          98,
+          101
+        ],
+        "hip": [
+          112,
+          115
+        ]
+      }
+    },
+    {
+      "label": "52",
+      "measurements": {
+        "waist": [
+          102,
+          108
+        ],
+        "hip": [
+          115,
+          119
+        ]
+      }
+    },
+    {
+      "label": "54",
+      "measurements": {
+        "waist": [
+          109,
+          114
+        ],
+        "hip": [
+          119,
+          123
+        ]
+      }
+    }
+  ],
+  "url": "https://www.thenorthface.com/help/sizing-charts.html/cctld=www_thenorthface_es",
+  "source": "Guía de tallas oficial de The North Face (https://www.thenorthface.com/help/sizing-charts.html/cctld=www_thenorthface_es), medidas del cuerpo en cm, consultada el 2026-11-10.",
+  "verified": true
+}
