@@ -401,10 +401,10 @@ const styles = StyleSheet.create({
   buttonText: { fontSize: 16, fontFamily: family.heading },
   iconButton: { width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' },
   chip: {
-    flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 14, paddingVertical: 9, borderRadius: radius.pill,
-    backgroundColor: color.surface,
+    flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 13, paddingVertical: 8, borderRadius: radius.pill,
+    backgroundColor: color.surface, borderWidth: 1.5, borderColor: color.line,
   },
-  chipSelected: { backgroundColor: color.indigo },
+  chipSelected: { backgroundColor: color.indigo, borderColor: color.indigo },
   chipText: { fontSize: font.small, color: color.ink, fontFamily: family.semibold },
   row: { flexDirection: 'row', gap: space.sm, alignItems: 'center' },
   segmented: { flexDirection: 'row', backgroundColor: color.surfaceAlt, borderRadius: radius.pill, padding: 4 },

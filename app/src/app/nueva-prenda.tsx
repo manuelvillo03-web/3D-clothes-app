@@ -149,7 +149,7 @@ export default function NuevaPrenda() {
         <Row>
           <Button kind="secondary" icon="add" label="Talla" onPress={() => setRows((rs) => [...rs, { label: '', values: {} }])} style={{ flex: 1 }} />
           {rows.length > 1 ? (
-            <Button kind="secondary" icon="remove" label="Quitar última" onPress={() => setRows((rs) => rs.slice(0, -1))} style={{ flex: 1 }} />
+            <Button kind="secondary" icon="remove" label="Quitar" onPress={() => setRows((rs) => rs.slice(0, -1))} style={{ flex: 1 }} />
           ) : null}
         </Row>
         <View style={{ gap: 2 }}>
