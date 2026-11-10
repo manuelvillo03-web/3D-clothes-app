@@ -1,5 +1,6 @@
 // Genera supabase/seed.sql con las guías de tallas de data/catalog/marcas.
-// Es idempotente: actualiza las que ya existen.
+// Es idempotente: actualiza las que ya existen, y solo si han cambiado (así
+// no se mueve su updated_at y las apps no las vuelven a descargar).
 //
 //   node scripts/build-seed.mjs
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
@@ -19,6 +20,7 @@ const rows = readdirSync(source).filter((f) => f.endsWith('.json')).sort().map((
 writeFileSync(out, `-- Generado con app/scripts/build-seed.mjs: no editar a mano.
 insert into public.garments (id, data, source) values
 ${rows.join(',\n')}
-on conflict (id) do update set data = excluded.data, source = excluded.source;
+on conflict (id) do update set data = excluded.data, source = excluded.source
+  where garments.data is distinct from excluded.data or garments.source is distinct from excluded.source;
 `);
 console.log(`${rows.length} prendas en ${out}`);

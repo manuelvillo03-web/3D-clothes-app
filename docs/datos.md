@@ -45,13 +45,23 @@ material, EAN, enlace e imágenes, pero ningún campo con medidas de la prenda
 
 ## Estado
 
-- **Hecho:** 17 guías de tallas oficiales (Levi's, Mango, New Balance, Nike,
-  Primark, ASOS) en `data/catalog/marcas`, con URL y fecha. Van dentro de la
-  app y en la tabla `garments` de Supabase.
+- **Hecho:** 44 guías de tallas oficiales de 18 marcas (adidas, Arc'teryx,
+  ASOS, Calvin Klein, Decathlon, Desigual, El Corte Inglés, Fred Perry, H&M,
+  Lacoste, Levi's, Mango, New Balance, Nike, Primark, The North Face, Urban
+  Outfitters y Vans) en `data/catalog/marcas`, con URL y fecha. Van dentro de
+  la app y en la tabla `garments` de Supabase.
+- **Sin contrastar:** las tres guías de H&M salen de su web de otro país
+  (`verified: false`); la app lo avisa en la ficha. Hay que cotejarlas con la
+  guía española.
 - **Hecho:** los usuarios pueden añadir prendas con su tabla (de la prenda o
   por cuerpo) y, si quieren, enviarlas a `garment_submissions` para revisión.
-- **Falta:** Zara, H&M, Pull&Bear y Bershka publican sus guías dentro de cada
-  ficha y con JavaScript; hay que copiarlas a mano prenda a prenda o pedirlas.
+- **Hecho:** quien compra puede decir cómo le quedó la talla. Se guarda en su
+  móvil y, solo si lo marca, se envía anónimo a `fit_feedback`.
+- **Falta:** Zara, Pull&Bear y Bershka publican sus medidas dentro de cada
+  ficha de producto, no en una guía general. Solo se pueden cubrir prenda a
+  prenda (a mano o por los usuarios) o con un acuerdo.
+- **Falta:** la guía de Puma no da medidas en centímetros, y las de Under
+  Armour, Desigual de mujer y parte de ASOS no se pudieron consultar.
 
 ## Pendiente
 

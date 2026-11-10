@@ -2,13 +2,19 @@
 
 Proyecto `probador`, región `eu-west-3` (París), plan gratuito.
 
-Aquí no hay datos del cuerpo de nadie: solo el catálogo de prendas y las
-prendas que proponen los usuarios.
+Aquí no hay datos del cuerpo de nadie: solo el catálogo de prendas, las
+prendas que proponen los usuarios y valoraciones anónimas de talla.
 
 | Tabla | Quién lee | Quién escribe |
 | --- | --- | --- |
 | `garments` | Cualquiera, solo lo publicado (`status = 'published'`) | Solo nosotros (clave de servicio o panel) |
+| `garment_removals` | Cualquiera | Solo un disparador, cuando una prenda deja de estar publicada o se borra |
 | `garment_submissions` | Nadie desde la app | Cualquiera, siempre como `pending`; máximo 30 envíos por minuto en total |
+| `fit_feedback` | Nadie desde la app (nosotros, con la vista `fit_feedback_summary`) | Cualquiera; máximo 60 envíos por minuto en total |
+
+La app sincroniza por diferencias: pide las prendas con `updated_at` posterior
+al último que recibió y las bajas con `removed_at` posterior. Por eso
+`seed.sql` solo toca las filas que han cambiado.
 
 ## Archivos
 
@@ -32,4 +38,20 @@ select 'comunidad-' || left(id::text, 8),
        'Aportación de usuario revisada'
 from garment_submissions where id = '<uuid>';
 update garment_submissions set status = 'accepted', reviewed_at = now() where id = '<uuid>';
+```
+
+## Retirar o corregir una guía
+
+```sql
+-- Corregir: las apps la descargan en su siguiente sincronización
+update garments set data = jsonb_set(data, '{sizes}', '[...]'::jsonb) where id = '<id>';
+
+-- Retirar: deja de mostrarse también en las apps ya instaladas
+update garments set status = 'hidden' where id = '<id>';
+```
+
+## Ver las valoraciones
+
+```sql
+select * from fit_feedback_summary order by total desc;
 ```

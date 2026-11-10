@@ -3,6 +3,43 @@
 Registro de decisiones, la más reciente arriba. Cada una dice qué se
 decidió, por qué y qué la haría cambiar.
 
+## 2026-11-10 · Identidad propia: añil y cinta métrica
+
+**Decisión.** La interfaz deja el aspecto de formulario y pasa a tener
+identidad de producto: añil vaquero como color de marca, amarillo de cinta
+métrica como único acento, Bricolage Grotesque para textos y Barlow Condensed
+para tallas y centímetros. Navegación por pestañas, bienvenida con un maniquí
+de muestra y asistente de medidas paso a paso. Detalle en [`diseno.md`](diseno.md).
+
+**Por qué.** La primera versión funcionaba pero no parecía una aplicación. La
+identidad sale del propio oficio (el vaquero, la cinta, la etiqueta colgante)
+para que no se confunda con una plantilla. La cinta de pared a escala y la
+cinta en 3D no son adorno: enseñan la altura y por dónde se mide.
+
+## 2026-11-10 · El catálogo se sincroniza por diferencias y manda el servidor
+
+**Decisión.** La app guarda una copia del catálogo compartido y solo pide a
+Supabase lo que cambió desde la última vez. Si una guía incluida en la app se
+corrige o se retira en el servidor, las apps instaladas aplican el cambio.
+
+**Por qué.** Descargar todo el catálogo en cada arranque no escala y gasta
+datos del usuario. Y como las guías se transcriben a mano, hay que poder
+corregir un error sin esperar a que cada persona actualice la app.
+
+**Coste.** Una tabla más (`garment_removals`) y un disparador, para que las
+apps se enteren también de lo que se retira.
+
+## 2026-11-10 · Valoraciones de talla anónimas y voluntarias
+
+**Decisión.** «¿Cómo te quedó?» se guarda siempre en el móvil. Solo si el
+usuario marca la casilla se envía a `fit_feedback`: prenda, talla, talla
+recomendada, respuesta y versión del motor. Sin medidas, sin identificador y
+con el día, no la hora.
+
+**Por qué.** Es el dato que permite saber si una marca talla pequeño o grande
+y calibrar las holguras, y se puede recoger sin saber nada del cuerpo de
+nadie. No se puede leer desde la app; por ahora solo lo vemos nosotros.
+
 ## 2026-11-09 · El maniquí se calcula en el móvil, sin servidor
 
 **Decisión.** La app no llama al motor de Python. Lleva dentro un modelo
@@ -55,8 +92,8 @@ pasar al plan Pro (25 $/mes).
 
 ## 2026-11-09 · Guías de tallas oficiales transcritas, sin extracción automática
 
-**Decisión.** El catálogo inicial son 17 guías de tallas (medidas del cuerpo)
-publicadas por Levi's, Mango, New Balance, Nike, Primark y ASOS, copiadas a
+**Decisión.** El catálogo son guías de tallas (medidas del cuerpo) publicadas
+por las propias marcas (44 guías de 18 marcas a 10 de noviembre), copiadas a
 mano de sus páginas con la URL y la fecha en cada ficha. No hay ningún
 programa que recorra webs de tiendas.
 

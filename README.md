@@ -17,7 +17,7 @@ El documento de requisitos y arquitectura está en Claude:
 | [`engine/`](engine/) | Motor de referencia en Python: ajuste del maniquí con Anny y clad-body, motor de tallas, API y generador del modelo del móvil |
 | [`data/catalog/`](data/catalog/) | Formato de las prendas, guías de tallas reales de marcas y prendas de ejemplo |
 | [`supabase/`](supabase/) | Base de datos del catálogo compartido: migraciones y datos iniciales |
-| [`docs/`](docs/) | Decisiones técnicas, calibración pendiente y estrategia de datos |
+| [`docs/`](docs/) | [Análisis de requisitos, riesgos y base de datos](docs/analisis.md), decisiones técnicas, sistema de diseño, calibración pendiente y estrategia de datos |
 
 ## Cómo funciona, en corto
 
@@ -69,11 +69,12 @@ el móvil», unos 15 minutos) y se guarda solo en la rama.
 
 ## Datos
 
-- **Catálogo incluido:** 17 guías de tallas oficiales de Levi's, Mango, New
-  Balance, Nike, Primark y ASOS, cada una con su fuente.
+- **Catálogo incluido:** 44 guías de tallas oficiales de 18 marcas, cada una
+  con su fuente y fecha ([lista y estado](docs/datos.md)).
 - **Catálogo compartido:** Supabase (proyecto `probador`, París). Lectura
   pública de lo publicado; las aportaciones de usuarios entran pendientes de
-  revisión. Ver [`supabase/`](supabase/).
+  revisión. La app guarda una copia y solo pide las novedades. Ver
+  [`supabase/`](supabase/).
 - No se extraen datos automáticamente de webs de tiendas
   ([por qué](docs/datos.md)).
 

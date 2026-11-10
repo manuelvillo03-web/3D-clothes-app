@@ -209,7 +209,10 @@ export default function Medidas() {
             <>
               <View style={{ gap: 4 }}>
                 <Txt variant="title">Empecemos por lo básico</Txt>
-                <Txt tone="muted">Con la altura y el peso ya sale un primer maniquí. Luego lo ajustas con la cinta.</Txt>
+                <Txt tone="muted">
+                  Con la altura y el peso ya sale un primer maniquí; luego lo ajustas con la cinta. Está pensado para
+                  cuerpos adultos.
+                </Txt>
               </View>
               <Card>
                 <Txt variant="label">Forma de partida del maniquí</Txt>

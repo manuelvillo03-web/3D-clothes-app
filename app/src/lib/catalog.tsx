@@ -6,7 +6,8 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState, t
 import bundled from '../data/catalog.json';
 import type { ReferenceGarment } from '../core/fit';
 import { parseGarment, type Garment, type RawGarment } from '../core/garments';
-import { fetchPublishedGarments } from './remote';
+import { applyDelta, EMPTY_CACHE, mergeCatalog, type CommunityCache } from './catalogSync';
+import { fetchCatalogChanges } from './remote';
 import { KEYS, load, save } from './storage';
 
 export interface CatalogItem {
@@ -45,7 +46,7 @@ function toItems(raws: RawGarment[], origin: CatalogItem['origin']): CatalogItem
   return out;
 }
 
-const BUNDLED = toItems(bundled as RawGarment[], 'bundled');
+const BUNDLED = bundled as RawGarment[];
 
 interface CatalogState {
   items: CatalogItem[];
@@ -68,7 +69,7 @@ const Ctx = createContext<CatalogState | null>(null);
 
 export function CatalogProvider({ children }: { children: ReactNode }) {
   const [mine, setMine] = useState<RawGarment[]>([]);
-  const [community, setCommunity] = useState<RawGarment[]>([]);
+  const [community, setCommunity] = useState<CommunityCache>(EMPTY_CACHE);
   const [remoteStatus, setRemoteStatus] = useState<CatalogState['remoteStatus']>('loading');
   const [wardrobe, setWardrobe] = useState<WardrobeItem[]>([]);
   const [history, setHistory] = useState<TryItem[]>([]);
@@ -77,23 +78,40 @@ export function CatalogProvider({ children }: { children: ReactNode }) {
     load<RawGarment[]>(KEYS.garments, []).then(setMine);
     load<WardrobeItem[]>(KEYS.wardrobe, []).then(setWardrobe);
     load<TryItem[]>(KEYS.history, []).then(setHistory);
-    fetchPublishedGarments()
-      .then((g) => {
-        setCommunity(g);
+    // Catálogo compartido: primero la copia guardada (funciona sin conexión)
+    // y después solo las novedades desde la última sincronización.
+    let alive = true;
+    (async () => {
+      const cache = { ...EMPTY_CACHE, ...(await load<CommunityCache>(KEYS.community, EMPTY_CACHE)) };
+      if (!alive) return;
+      setCommunity(cache);
+      try {
+        const delta = await fetchCatalogChanges(cache.cursor);
+        if (!alive) return;
+        if (delta.changed.length || delta.removed.length) {
+          const next = applyDelta(cache, delta);
+          setCommunity(next);
+          void save(KEYS.community, next);
+        }
         setRemoteStatus('ok');
-      })
-      .catch(() => setRemoteStatus('error'));
+      } catch {
+        if (alive) setRemoteStatus('error');
+      }
+    })();
+    return () => {
+      alive = false;
+    };
   }, []);
 
   const items = useMemo(() => {
-    const all = [...toItems(mine, 'mine'), ...BUNDLED, ...toItems(community, 'community')];
-    const seen = new Set<string>();
-    return all.filter((it) => {
-      const id = it.garment.id ?? `${it.garment.brand}-${it.garment.name}`;
-      if (seen.has(id)) return false;
-      seen.add(id);
-      return true;
-    });
+    const own = toItems(mine, 'mine');
+    const taken = new Set(own.map((it) => it.garment.id));
+    const shared: CatalogItem[] = [];
+    for (const { raw, origin } of mergeCatalog(BUNDLED, community)) {
+      if (taken.has(raw.id)) continue;
+      shared.push(...toItems([raw], origin));
+    }
+    return [...own, ...shared];
   }, [mine, community]);
 
   const byId = useCallback((id: string) => items.find((it) => it.garment.id === id), [items]);
