@@ -12,6 +12,8 @@ export const KEYS = {
   wardrobe: 'probador.wardrobe.v1',
   garments: 'probador.garments.v1',
   history: 'probador.history.v1',
+  /** Copia local del catálogo compartido (no es un dato personal). */
+  community: 'probador.community.v1',
 } as const;
 
 export async function load<T>(key: string, fallback: T): Promise<T> {

@@ -31,16 +31,17 @@ describe('prenda aproximada sobre el maniquí', () => {
     for (let i = 0; i < 300; i += 3) expect(Math.hypot(n[i], n[i + 1], n[i + 2])).toBeCloseTo(1, 5);
   });
 
-  it('la camiseta cubre tronco y no piernas, y se separa de la piel', () => {
+  it('la camiseta cubre el tronco, no baja de la cadera y se separa de la piel', () => {
     const fit = fitGarment(tee, pred.measurements);
     const size = fit.sizes.find((s) => s.label === 'M')!;
     const shell = buildShell(model, vertices, pred.measurements, tee, size);
     expect(shell.index.length).toBeGreaterThan(300);
     const used = new Set(shell.index);
-    let legs = 0;
+    const hip = (pred.measurements.z_hip ?? 0.52 * pred.measurements.height) / 100;
+    let low = 0;
     let moved = 0;
     for (const v of used) {
-      if (model.vertexPart[v] === PART.leg) legs++;
+      if (shell.positions[v * 3 + 1] < hip - 0.09) low++;
       const d = Math.hypot(
         shell.positions[v * 3] - vertices[v * 3],
         shell.positions[v * 3 + 1] - vertices[v * 3 + 1],
@@ -48,7 +49,7 @@ describe('prenda aproximada sobre el maniquí', () => {
       );
       if (d > 0.003) moved++;
     }
-    expect(legs).toBe(0);
+    expect(low).toBe(0);
     expect(moved).toBe(used.size);
   });
 

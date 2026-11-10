@@ -23,7 +23,7 @@ export interface Shell {
 const NOMINAL_EASE: Record<Status, number> = { tight: 0.5, snug: 2, good: 6, loose: 12, very_loose: 20 };
 const RISE_FRACTION: Record<string, number> = { high: 0.05, mid: 0.25, low: 0.5 };
 const MIN_GAP = 0.004; // m: evita que la prenda se cruce con la piel
-const UNKNOWN = '#B8B0A6';
+const UNKNOWN = '#8E93B8';
 
 function hexToRgb(hex: string): [number, number, number] {
   const n = parseInt(hex.slice(1), 16);
@@ -176,7 +176,8 @@ export function buildShell(
         zone = [...d].filter(([k]) => zones.has(k)).sort((a, b) => a[1] - b[1])[0]?.[0] ?? 'chest';
       }
       g = gapAt(Math.min(y, lm.bust));
-    } else if (kind === 'leg' && !isBottom && y >= hem && (garment.category === 'dress' || garment.category === 'coat')) {
+    } else if (kind === 'leg' && !isBottom && y >= hem) {
+      // La malla ya es «pierna» por debajo de la cadera: el bajo de una prenda larga llega ahí.
       zone = y < hem + band && zones.has('length') ? 'length' : 'hip';
       g = gapAt(lm.hip);
     } else if (kind === 'arm' && sleeveReach > 0) {
@@ -200,15 +201,49 @@ export function buildShell(
     }
   }
 
+  // Borde recto en la cinturilla y en el bajo: las caras que cruzan el límite
+  // se incluyen llevando sus vértices de fuera justo hasta él (si no, el borde
+  // seguiría el dibujo de la malla y quedaría dentado).
+  const topLimit = isBottom ? waistband : null;
+  const reach = 0.06 * scale;
+  const edge = (i: number): number | null => {
+    const y = vertices[i * 3 + 1];
+    const kind = partKind(model.vertexPart[i]);
+    if (kind === 'arm') return null;
+    if (topLimit !== null && kind === 'torso' && y > topLimit && y - topLimit < reach) return topLimit;
+    if (y < hem && hem - y < reach && (kind === 'leg' || !isBottom)) return hem;
+    return null;
+  };
   const tri: number[] = [];
   const f = model.faces;
   for (let k = 0; k < f.length; k += 3) {
-    if (covered[f[k]] && covered[f[k + 1]] && covered[f[k + 2]]) tri.push(f[k], f[k + 1], f[k + 2]);
+    const face = [f[k], f[k + 1], f[k + 2]];
+    const inside = face.filter((i) => covered[i] === 1);
+    if (inside.length === 3) {
+      tri.push(face[0], face[1], face[2]);
+      continue;
+    }
+    if (inside.length === 0) continue;
+    const outside = face.filter((i) => covered[i] !== 1);
+    if (outside.some((i) => covered[i] === 0 && edge(i) === null)) continue;
+    const from = inside[0];
+    for (const i of outside) {
+      if (covered[i] === 2) continue;
+      const g = Math.hypot(
+        positions[from * 3] - vertices[from * 3], positions[from * 3 + 1] - vertices[from * 3 + 1], positions[from * 3 + 2] - vertices[from * 3 + 2],
+      );
+      positions[i * 3] = vertices[i * 3] + normals[i * 3] * g;
+      positions[i * 3 + 1] = edge(i) as number;
+      positions[i * 3 + 2] = vertices[i * 3 + 2] + normals[i * 3 + 2] * g;
+      colors[i * 3] = colors[from * 3]; colors[i * 3 + 1] = colors[from * 3 + 1]; colors[i * 3 + 2] = colors[from * 3 + 2];
+      covered[i] = 2;
+    }
+    tri.push(face[0], face[1], face[2]);
   }
   return { positions, colors, index: Uint32Array.from(tri) };
 }
 
 // Duplicado de theme.statusColor para que el núcleo no dependa de la UI.
 const STATUS_HEX: Record<Status, string> = {
-  tight: '#D2463C', snug: '#E3A33B', good: '#3E9C6A', loose: '#4C86C6', very_loose: '#7C5CC4',
+  tight: '#F0505A', snug: '#F59A2F', good: '#2DB37A', loose: '#4C9BEF', very_loose: '#9B7BF0',
 };

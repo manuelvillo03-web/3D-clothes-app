@@ -1,0 +1,79 @@
+{
+  "id": "desigual-partes-arriba-hombre",
+  "brand": "Desigual",
+  "name": "Partes de arriba de hombre (guía de tallas)",
+  "audience": "men",
+  "category": "tshirt",
+  "cut": "regular",
+  "chart_type": "body",
+  "sizes": [
+    {
+      "label": "S",
+      "measurements": {
+        "chest": [
+          91,
+          97
+        ],
+        "waist": [
+          75,
+          81
+        ]
+      }
+    },
+    {
+      "label": "M",
+      "measurements": {
+        "chest": [
+          97,
+          103
+        ],
+        "waist": [
+          81,
+          87
+        ]
+      }
+    },
+    {
+      "label": "L",
+      "measurements": {
+        "chest": [
+          103,
+          109
+        ],
+        "waist": [
+          87,
+          93
+        ]
+      }
+    },
+    {
+      "label": "XL",
+      "measurements": {
+        "chest": [
+          109,
+          115
+        ],
+        "waist": [
+          93,
+          99
+        ]
+      }
+    },
+    {
+      "label": "XXL",
+      "measurements": {
+        "chest": [
+          115,
+          121
+        ],
+        "waist": [
+          99,
+          105
+        ]
+      }
+    }
+  ],
+  "url": "https://www.desigual.com/en_CA/men-size-guide",
+  "source": "Guía de tallas oficial de Desigual (https://www.desigual.com/en_CA/men-size-guide), medidas del cuerpo en cm, consultada el 2026-11-10.",
+  "verified": true
+}

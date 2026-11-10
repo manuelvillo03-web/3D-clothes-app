@@ -1,104 +1,189 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native';
-import type { FitResult, SizeResult, Status } from '../core/fit';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { LENGTH_ZONES, type FitResult, type SizeResult, type Status, type ZoneResult } from '../core/fit';
 import { fmtG } from '../core/measurements';
-import { color, font, radius, space, statusColor, statusLabel } from '../lib/theme';
-import { Badge, Card, H2, P } from './ui';
+import { es } from '../lib/format';
+import { color, family, radius, space, statusColor, statusLabel } from '../lib/theme';
+import { Card, Txt } from './ui';
 
-const CONFIDENCE: Record<FitResult['confidence'], { label: string; tint: string }> = {
-  alta: { label: 'Confianza alta', tint: statusColor.good },
-  media: { label: 'Confianza media', tint: statusColor.snug },
-  baja: { label: 'Confianza baja', tint: statusColor.tight },
+const CONFIDENCE: Record<FitResult['confidence'], { label: string; level: number }> = {
+  alta: { label: 'Confianza alta', level: 3 },
+  media: { label: 'Confianza media', level: 2 },
+  baja: { label: 'Confianza baja', level: 1 },
 };
+
+/** Estado que resume una talla: lo peor que le pasa. */
+export function overall(size: SizeResult): Status {
+  const has = (s: Status) => size.zones.some((z) => z.status === s);
+  if (has('tight')) return 'tight';
+  if (has('very_loose')) return 'very_loose';
+  if (has('snug')) return 'snug';
+  if (has('loose')) return 'loose';
+  return 'good';
+}
+
+/** Etiqueta colgante de talla, como la de la prenda. */
+export function HangTag({ label, tone = 'light', caption, size = 'md' }: {
+  label: string; tone?: 'light' | 'indigo' | 'tape'; caption?: string; size?: 'sm' | 'md' | 'lg';
+}) {
+  const dims = { sm: { w: 46, h: 58, f: 22 }, md: { w: 62, h: 80, f: 30 }, lg: { w: 104, h: 132, f: 56 } }[size];
+  const long = label.length > 3;
+  const bg = tone === 'indigo' ? color.indigo : tone === 'tape' ? color.tape : color.surface;
+  const fg = tone === 'indigo' ? color.onIndigo : color.tapeInk;
+  return (
+    <View style={[styles.tag, { minWidth: dims.w, height: dims.h, backgroundColor: bg }, tone === 'light' && styles.tagLine]}>
+      <View style={[styles.hole, size === 'lg' && { width: 12, height: 12, borderRadius: 6, marginTop: 10 }, tone !== 'light' && { backgroundColor: tone === 'tape' ? color.indigo : color.tape }]} />
+      <Text style={[styles.tagLabel, { fontSize: long ? dims.f * 0.62 : dims.f, lineHeight: dims.f * 1.05, color: fg }]} numberOfLines={1}>{label}</Text>
+      {caption ? <Text style={[styles.tagCaption, { color: fg }, size === 'lg' && { fontSize: 13 }]}>{caption}</Text> : <View style={{ height: 4 }} />}
+    </View>
+  );
+}
 
 export function SizePicker({ sizes, selected, recommended, onSelect }: {
   sizes: SizeResult[]; selected: string | null; recommended: string | null; onSelect: (label: string) => void;
 }) {
   return (
-    <View style={styles.sizes} accessibilityRole="radiogroup" accessibilityLabel="Tallas">
+    <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.sizes}
+      accessibilityRole="radiogroup" accessibilityLabel="Tallas">
       {sizes.map((s) => {
         const on = s.label === selected;
         const rec = s.label === recommended;
+        const st = overall(s);
         return (
           <Pressable
             key={s.label}
             accessibilityRole="radio"
             accessibilityState={{ checked: on }}
-            accessibilityLabel={`Talla ${s.label}${rec ? ', recomendada' : ''}${s.wearable ? '' : ', aprieta'}`}
+            accessibilityLabel={`Talla ${s.label}${rec ? ', tu talla' : ''}, ${statusLabel[st].toLowerCase()}`}
             onPress={() => onSelect(s.label)}
-            style={[styles.size, on && styles.sizeOn, !s.wearable && styles.sizeTight]}
+            style={({ pressed }) => [{ alignItems: 'center', gap: 6 }, pressed && { opacity: 0.75 }]}
           >
-            <Text style={[styles.sizeText, on && { color: color.accentInk }]}>{s.label}</Text>
-            {rec ? <View style={[styles.dot, { backgroundColor: on ? color.accentInk : color.accent }]} /> : null}
+            <HangTag label={s.label} tone={on ? 'indigo' : rec ? 'tape' : 'light'} caption={rec ? 'Tu talla' : undefined} />
+            <View style={[styles.sizeDot, { backgroundColor: s.zones.length ? statusColor[st] : color.line }, on && { width: 22 }]} />
           </Pressable>
         );
       })}
-    </View>
+    </ScrollView>
   );
 }
 
+/** Veredicto: la talla recomendada, con cuánta confianza y por qué. */
 export function Recommendation({ result }: { result: FitResult }) {
   if (!result.recommended) {
-    return <Card><P>{result.explanation[0]}</P></Card>;
+    return <Card><Txt>{result.explanation[0]}</Txt></Card>;
   }
   const conf = CONFIDENCE[result.confidence];
-  const [headline, ...rest] = result.explanation;
+  const best = result.sizes.find((s) => s.label === result.recommended);
+  const zoneNames = new Set((best?.zones ?? []).map((z) => `${z.name}:`));
+  // Las frases zona a zona ya están en los medidores: aquí solo el resto.
+  const notes = result.explanation.slice(1).filter((l) => ![...zoneNames].some((n) => l.startsWith(n)));
+  const good = (best?.zones ?? []).filter((z) => z.status === 'good').map((z) => z.name.toLowerCase());
+  const summary = !best ? '' : good.length === best.zones.length
+    ? 'Te queda bien en todas las zonas que podemos comparar.'
+    : good.length ? `Te queda bien en ${list(good)}.` : 'Es la que más se acerca, pero ninguna zona queda del todo bien.';
   return (
-    <Card>
+    <Card tone="indigo" style={{ gap: space.lg }}>
       <View style={styles.recTop}>
-        <View style={styles.recSize}>
-          <Text style={styles.recLabel}>Tu talla</Text>
-          <Text style={styles.recValue}>{result.recommended}</Text>
-        </View>
-        <View style={{ flex: 1, gap: 6 }}>
-          <Badge label={conf.label} tint={conf.tint} />
-          {result.alternative ? <P small muted>Alternativa: {result.alternative}</P> : null}
-          <P small muted>{headline}</P>
+        <HangTag label={result.recommended} tone="tape" size="lg" caption="Tu talla" />
+        <View style={{ flex: 1, gap: space.sm }}>
+          <Txt variant="h2" tone="onIndigo">{summary}</Txt>
+          <View style={styles.conf} accessible accessibilityLabel={conf.label}>
+            {[1, 2, 3].map((n) => (
+              <View key={n} style={[styles.confBar, { backgroundColor: n <= conf.level ? color.tape : 'rgba(255,255,255,0.22)' }]} />
+            ))}
+            <Txt variant="small" tone="onIndigoMuted">{conf.label}</Txt>
+          </View>
         </View>
       </View>
-      {rest.map((line) => <P key={line} small>{line}</P>)}
-      {result.warnings.map((w) => <P key={w} small muted>{w}</P>)}
-    </Card>
-  );
-}
-
-export function ZoneTable({ size }: { size: SizeResult }) {
-  return (
-    <Card>
-      <H2>Talla {size.label}, zona a zona</H2>
-      {size.zones.length === 0 ? <P muted>Esta talla no tiene medidas comparables con tu cuerpo.</P> : null}
-      {size.zones.map((z) => (
-        <View key={z.zone} style={styles.zoneRow}>
-          <View style={[styles.swatch, { backgroundColor: statusColor[z.status] }]} />
-          <View style={{ flex: 1 }}>
-            <Text style={styles.zoneName}>{z.name}</Text>
-            <Text style={styles.zoneDetail}>{detail(z)}</Text>
-          </View>
-          <Text style={[styles.zoneStatus, { color: statusColor[z.status] }]}>{z.status_text}</Text>
+      {notes.length || result.warnings.length ? (
+        <View style={{ gap: 6 }}>
+          {notes.map((line) => <Txt key={line} variant="small" tone="onIndigo">{es(line)}</Txt>)}
+          {result.warnings.map((w) => <Txt key={w} variant="small" tone="onIndigoMuted">{w}</Txt>)}
         </View>
-      ))}
+      ) : null}
     </Card>
   );
 }
 
-function detail(z: SizeResult['zones'][number]): string {
+function list(items: string[]): string {
+  if (items.length <= 1) return items.join('');
+  return `${items.slice(0, -1).join(', ')} y ${items[items.length - 1]}`;
+}
+
+/** Posición (0 aprieta … 1 holgado) del marcador en el medidor de una zona. */
+export function gaugePosition(z: ZoneResult): number {
+  const clamp = (v: number) => Math.max(0.04, Math.min(0.96, v));
+  if (z.ideal) {
+    const [lo, hi] = z.ideal;
+    const span = Math.max(hi - lo, 2);
+    if (z.ease_cm !== null) return clamp(1 / 3 + ((z.ease_cm - lo) / span) / 3);
+    if (z.body_cm !== null) return clamp(1 / 3 + ((hi - z.body_cm) / span) / 3);
+  }
+  return { tight: 0.08, snug: 0.26, good: 0.5, loose: 0.74, very_loose: 0.92 }[z.status];
+}
+
+function detail(z: ZoneResult): string {
+  return es(rawDetail(z));
+}
+
+function rawDetail(z: ZoneResult): string {
   if (z.ease_cm !== null && z.garment_cm !== null && z.body_cm !== null) {
     const sign = z.ease_cm > 0 ? '+' : '';
-    return `Prenda ${fmtG(z.garment_cm)} cm · tú ${fmtG(z.body_cm)} cm · ${sign}${fmtG(z.ease_cm)} cm`;
+    return `Prenda ${fmtG(z.garment_cm)}, tú ${fmtG(z.body_cm)} (${sign}${fmtG(z.ease_cm)} cm)`;
   }
   if (z.ease_cm !== null && z.garment_cm !== null) {
     const sign = z.ease_cm > 0 ? '+' : '';
-    return `Prenda ${fmtG(z.garment_cm)} cm · ${sign}${fmtG(z.ease_cm)} cm frente a la tuya`;
+    return `Prenda ${fmtG(z.garment_cm)} (${sign}${fmtG(z.ease_cm)} cm frente a la tuya)`;
   }
   if (z.ideal && z.body_cm !== null) {
-    return `Tú ${fmtG(z.body_cm)} cm · la talla va de ${fmtG(z.ideal[0])} a ${fmtG(z.ideal[1])} cm`;
+    return `Tú ${fmtG(z.body_cm)}, la talla va de ${fmtG(z.ideal[0])} a ${fmtG(z.ideal[1])} cm`;
   }
   return '';
 }
 
-export function Legend() {
+function Gauge({ zone }: { zone: ZoneResult }) {
+  const pos = gaugePosition(zone);
+  const tint = statusColor[zone.status];
+  const lengthy = LENGTH_ZONES.has(zone.zone);
+  return (
+    <View style={styles.gauge} accessible accessibilityLabel={`${zone.name}: ${zone.status_text}. ${detail(zone)}`}>
+      <View style={styles.gaugeHead}>
+        <Txt variant="label">{zone.name}</Txt>
+        <Text style={[styles.gaugeStatus, { color: tint }]}>{zone.status_text.charAt(0).toUpperCase() + zone.status_text.slice(1)}</Text>
+      </View>
+      <View style={styles.track}>
+        <View style={[styles.seg, { backgroundColor: '#FBD9D6', borderTopLeftRadius: 5, borderBottomLeftRadius: 5 }]} />
+        <View style={[styles.seg, { backgroundColor: '#C9EFDD' }]} />
+        <View style={[styles.seg, { backgroundColor: '#D5E6FB', borderTopRightRadius: 5, borderBottomRightRadius: 5 }]} />
+        <View style={[styles.knob, { left: `${pos * 100}%`, backgroundColor: tint }]} />
+      </View>
+      <View style={styles.gaugeFoot}>
+        <Text style={styles.scale}>{lengthy ? 'Corto' : 'Aprieta'}</Text>
+        <Text style={styles.gaugeDetail} numberOfLines={1}>{detail(zone)}</Text>
+        <Text style={styles.scale}>{lengthy ? 'Largo' : 'Holgado'}</Text>
+      </View>
+    </View>
+  );
+}
+
+export function ZoneGauges({ size, isRecommended }: { size: SizeResult; isRecommended: boolean }) {
+  return (
+    <Card>
+      <View style={styles.gaugeHead}>
+        <Txt variant="h2">Talla {size.label}, zona a zona</Txt>
+        {!isRecommended ? <Txt variant="small" tone="muted">No es tu talla</Txt> : null}
+      </View>
+      {size.zones.length === 0 ? <Txt tone="muted">Esta talla no tiene medidas comparables con tu cuerpo.</Txt> : null}
+      {size.zones.map((z) => <Gauge key={z.zone} zone={z} />)}
+    </Card>
+  );
+}
+
+/** Leyenda de colores del mapa de ajuste, para ir sobre el escenario. */
+export function Legend({ title }: { title?: string }) {
   const order: Status[] = ['tight', 'snug', 'good', 'loose', 'very_loose'];
   return (
-    <View style={styles.legend}>
+    <View style={styles.legend} pointerEvents="none">
+      {title ? <Text style={styles.legendTitle}>{title}</Text> : null}
       {order.map((s) => (
         <View key={s} style={styles.legendItem}>
           <View style={[styles.legendDot, { backgroundColor: statusColor[s] }]} />
@@ -110,29 +195,37 @@ export function Legend() {
 }
 
 const styles = StyleSheet.create({
-  sizes: { flexDirection: 'row', flexWrap: 'wrap', gap: space.sm },
-  size: {
-    minWidth: 52, height: 44, paddingHorizontal: space.md, borderRadius: radius.md, borderWidth: 1,
-    borderColor: color.line, backgroundColor: color.surface, alignItems: 'center', justifyContent: 'center',
+  tag: {
+    borderRadius: 10, borderTopLeftRadius: 18, borderTopRightRadius: 18, alignItems: 'center', justifyContent: 'space-between',
+    paddingHorizontal: 8, paddingBottom: 6,
   },
-  sizeOn: { backgroundColor: color.accent, borderColor: color.accent },
-  sizeTight: { borderStyle: 'dashed' },
-  sizeText: { fontSize: font.body, fontWeight: '700', color: color.ink },
-  dot: { width: 6, height: 6, borderRadius: 3, marginTop: 3 },
+  tagLine: { borderWidth: 1.5, borderColor: color.line },
+  hole: { width: 8, height: 8, borderRadius: 4, backgroundColor: color.bg, marginTop: 7 },
+  tagLabel: { fontFamily: family.numBold, letterSpacing: -0.5 },
+  tagCaption: { fontFamily: family.semibold, fontSize: 9.5, lineHeight: 12 },
+  sizes: { gap: space.sm, paddingHorizontal: space.lg, paddingVertical: 2 },
+  sizeDot: { width: 8, height: 8, borderRadius: 4 },
   recTop: { flexDirection: 'row', gap: space.lg, alignItems: 'center' },
-  recSize: {
-    width: 88, height: 88, borderRadius: radius.lg, backgroundColor: color.accentSoft,
-    alignItems: 'center', justifyContent: 'center',
+  conf: { flexDirection: 'row', alignItems: 'center', gap: 4 },
+  confBar: { width: 16, height: 5, borderRadius: 3 },
+  gauge: { gap: 6, paddingTop: space.xs },
+  gaugeHead: { flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between', gap: space.sm },
+  gaugeStatus: { fontFamily: family.heading, fontSize: 14 },
+  track: { flexDirection: 'row', height: 10, gap: 2, marginHorizontal: 9 },
+  seg: { flex: 1 },
+  knob: {
+    position: 'absolute', top: -5, width: 20, height: 20, borderRadius: 10, marginLeft: -10,
+    borderWidth: 3, borderColor: color.surface,
   },
-  recLabel: { fontSize: font.tiny, color: color.accent, fontWeight: '700', textTransform: 'uppercase' },
-  recValue: { fontSize: 30, fontWeight: '800', color: color.accent },
-  zoneRow: { flexDirection: 'row', alignItems: 'center', gap: space.md, paddingVertical: 6 },
-  swatch: { width: 12, height: 36, borderRadius: 4 },
-  zoneName: { fontSize: font.body, fontWeight: '700', color: color.ink },
-  zoneDetail: { fontSize: font.small, color: color.muted },
-  zoneStatus: { fontSize: font.small, fontWeight: '700' },
-  legend: { flexDirection: 'row', flexWrap: 'wrap', gap: space.md, justifyContent: 'center' },
-  legendItem: { flexDirection: 'row', alignItems: 'center', gap: 5 },
-  legendDot: { width: 10, height: 10, borderRadius: 5 },
-  legendText: { fontSize: font.tiny, color: color.muted, fontWeight: '600' },
+  gaugeFoot: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: space.sm },
+  scale: { fontFamily: family.medium, fontSize: 11, color: color.faint },
+  gaugeDetail: { flex: 1, textAlign: 'center', fontFamily: family.numMedium, fontSize: 14, color: color.muted },
+  legend: {
+    position: 'absolute', right: space.md, top: space.md, gap: 5, backgroundColor: 'rgba(20,24,63,0.55)',
+    borderRadius: radius.md, paddingHorizontal: 10, paddingVertical: 8,
+  },
+  legendTitle: { fontFamily: family.numBold, fontSize: 17, color: color.tape, marginBottom: 1 },
+  legendItem: { flexDirection: 'row', alignItems: 'center', gap: 6 },
+  legendDot: { width: 9, height: 9, borderRadius: 5 },
+  legendText: { fontSize: 11, color: color.onIndigo, fontFamily: family.medium },
 });

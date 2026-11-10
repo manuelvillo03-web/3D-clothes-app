@@ -1,0 +1,85 @@
+{
+  "id": "lacoste-polos-hombre",
+  "brand": "Lacoste",
+  "name": "Polos y partes de arriba de hombre (guía de tallas)",
+  "audience": "men",
+  "category": "polo",
+  "cut": "regular",
+  "chart_type": "body",
+  "sizes": [
+    {
+      "label": "XS (2)",
+      "measurements": {
+        "chest": 87,
+        "waist": 73
+      }
+    },
+    {
+      "label": "S (3)",
+      "measurements": {
+        "chest": 93,
+        "waist": [
+          77,
+          81
+        ]
+      }
+    },
+    {
+      "label": "M (4)",
+      "measurements": {
+        "chest": 101,
+        "waist": [
+          85,
+          89
+        ]
+      }
+    },
+    {
+      "label": "L (5)",
+      "measurements": {
+        "chest": 109,
+        "waist": [
+          93,
+          97
+        ]
+      }
+    },
+    {
+      "label": "XL (6)",
+      "measurements": {
+        "chest": 117,
+        "waist": [
+          101,
+          106
+        ]
+      }
+    },
+    {
+      "label": "2XL (7)",
+      "measurements": {
+        "chest": 125,
+        "waist": [
+          111,
+          116
+        ]
+      }
+    },
+    {
+      "label": "3XL (8)",
+      "measurements": {
+        "chest": 129,
+        "waist": 121
+      }
+    },
+    {
+      "label": "4XL (9)",
+      "measurements": {
+        "chest": 134,
+        "waist": 126
+      }
+    }
+  ],
+  "url": "https://www.lacoste.com/es/Guiadetallas",
+  "source": "Guía de tallas oficial de Lacoste (https://www.lacoste.com/es/Guiadetallas), medidas del cuerpo en cm, consultada el 2026-11-10. Entre paréntesis, la talla numérica de Lacoste. La cintura es la de pantalón.",
+  "verified": true
+}

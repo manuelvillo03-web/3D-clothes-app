@@ -1,0 +1,50 @@
+{
+  "id": "fred-perry-polos-mujer",
+  "brand": "Fred Perry",
+  "name": "Polos y partes de arriba de mujer (guía de tallas)",
+  "audience": "women",
+  "category": "polo",
+  "cut": "regular",
+  "chart_type": "body",
+  "sizes": [
+    {
+      "label": "34",
+      "measurements": {
+        "chest": 80
+      }
+    },
+    {
+      "label": "36",
+      "measurements": {
+        "chest": 84
+      }
+    },
+    {
+      "label": "38",
+      "measurements": {
+        "chest": 88
+      }
+    },
+    {
+      "label": "40",
+      "measurements": {
+        "chest": 92
+      }
+    },
+    {
+      "label": "42",
+      "measurements": {
+        "chest": 98
+      }
+    },
+    {
+      "label": "44",
+      "measurements": {
+        "chest": 104
+      }
+    }
+  ],
+  "url": "https://www.fredperry.com/eu/size-guides/womens",
+  "source": "Guía de tallas oficial de Fred Perry (https://www.fredperry.com/eu/size-guides/womens), medidas del cuerpo en cm, consultada el 2026-11-10.",
+  "verified": true
+}

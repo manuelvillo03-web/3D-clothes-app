@@ -1,0 +1,85 @@
+{
+  "id": "calvin-klein-vaqueros-mujer",
+  "brand": "Calvin Klein",
+  "name": "Vaqueros de mujer (guía de tallas)",
+  "audience": "women",
+  "category": "jeans",
+  "cut": "regular",
+  "chart_type": "body",
+  "rise": "mid",
+  "sizes": [
+    {
+      "label": "24",
+      "measurements": {
+        "waist": 61.0,
+        "hip": 86.4
+      }
+    },
+    {
+      "label": "25",
+      "measurements": {
+        "waist": 63.5,
+        "hip": 88.9
+      }
+    },
+    {
+      "label": "26",
+      "measurements": {
+        "waist": 66.0,
+        "hip": 91.4
+      }
+    },
+    {
+      "label": "27",
+      "measurements": {
+        "waist": 68.6,
+        "hip": 94.0
+      }
+    },
+    {
+      "label": "28",
+      "measurements": {
+        "waist": 71.1,
+        "hip": 96.5
+      }
+    },
+    {
+      "label": "29",
+      "measurements": {
+        "waist": 73.7,
+        "hip": 99.1
+      }
+    },
+    {
+      "label": "30",
+      "measurements": {
+        "waist": 76.2,
+        "hip": 101.6
+      }
+    },
+    {
+      "label": "31",
+      "measurements": {
+        "waist": 80.0,
+        "hip": 105.4
+      }
+    },
+    {
+      "label": "32",
+      "measurements": {
+        "waist": 83.8,
+        "hip": 109.2
+      }
+    },
+    {
+      "label": "33",
+      "measurements": {
+        "waist": 87.6,
+        "hip": 111.8
+      }
+    }
+  ],
+  "url": "https://www.calvinklein.us/en/women-size-guide.html",
+  "source": "Guía de tallas oficial de Calvin Klein (https://www.calvinklein.us/en/women-size-guide.html), medidas del cuerpo en cm, consultada el 2026-11-10. Publicada en pulgadas; convertida a cm (2,54) y redondeada a 1 decimal.",
+  "verified": true
+}

@@ -1,0 +1,62 @@
+{
+  "id": "urban-outfitters-vestidos-mujer",
+  "brand": "Urban Outfitters",
+  "name": "Vestidos (guía de tallas)",
+  "audience": "women",
+  "category": "dress",
+  "cut": "regular",
+  "chart_type": "body",
+  "sizes": [
+    {
+      "label": "XXS",
+      "measurements": {
+        "chest": 79.5,
+        "waist": 60.5,
+        "hip": 84
+      }
+    },
+    {
+      "label": "XS",
+      "measurements": {
+        "chest": 82,
+        "waist": 63,
+        "hip": 86.5
+      }
+    },
+    {
+      "label": "S",
+      "measurements": {
+        "chest": 87,
+        "waist": 68,
+        "hip": 91.5
+      }
+    },
+    {
+      "label": "M",
+      "measurements": {
+        "chest": 92,
+        "waist": 73,
+        "hip": 96.5
+      }
+    },
+    {
+      "label": "L",
+      "measurements": {
+        "chest": 97,
+        "waist": 78,
+        "hip": 101.5
+      }
+    },
+    {
+      "label": "XL",
+      "measurements": {
+        "chest": 102,
+        "waist": 83,
+        "hip": 106.5
+      }
+    }
+  ],
+  "url": "https://www.urbanoutfitters.com/es-es/help/size-charts",
+  "source": "Guía de tallas oficial de Urban Outfitters (https://www.urbanoutfitters.com/es-es/help/size-charts), medidas del cuerpo en cm, consultada el 2026-11-10.",
+  "verified": true
+}

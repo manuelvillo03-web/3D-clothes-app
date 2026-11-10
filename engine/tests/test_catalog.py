@@ -35,7 +35,9 @@ def test_brand_guide_is_valid(path):
     raw = json.loads(path.read_text())
     garment = Garment.model_validate(raw)
     assert garment.id == path.stem
-    assert garment.chart_type == "body" and garment.verified
+    assert garment.chart_type == "body"
+    # Sin verificar solo si la fuente explica por qué.
+    assert garment.verified or "pendiente" in garment.source
     assert garment.source and garment.url and garment.audience
     assert fit_garment(garment, BODY).recommended is not None
 

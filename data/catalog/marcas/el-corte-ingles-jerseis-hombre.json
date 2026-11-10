@@ -1,0 +1,68 @@
+{
+  "id": "el-corte-ingles-jerseis-hombre",
+  "brand": "El Corte Inglés",
+  "name": "Punto y jerséis de hombre (guía de tallas)",
+  "audience": "men",
+  "category": "sweater",
+  "cut": "regular",
+  "chart_type": "body",
+  "sizes": [
+    {
+      "label": "XS",
+      "measurements": {
+        "chest": [
+          86,
+          89
+        ]
+      }
+    },
+    {
+      "label": "S",
+      "measurements": {
+        "chest": [
+          90,
+          93
+        ]
+      }
+    },
+    {
+      "label": "M",
+      "measurements": {
+        "chest": [
+          94,
+          98
+        ]
+      }
+    },
+    {
+      "label": "L",
+      "measurements": {
+        "chest": [
+          99,
+          104
+        ]
+      }
+    },
+    {
+      "label": "XL",
+      "measurements": {
+        "chest": [
+          105,
+          110
+        ]
+      }
+    },
+    {
+      "label": "2XL",
+      "measurements": {
+        "chest": [
+          111,
+          117
+        ]
+      }
+    }
+  ],
+  "url": "https://www.elcorteingles.es/moda-hombre/ropa/punto-y-jerseis/tallas/",
+  "source": "Guía de tallas oficial de El Corte Inglés (https://www.elcorteingles.es/moda-hombre/ropa/punto-y-jerseis/tallas/), medidas del cuerpo en cm, consultada el 2026-11-10.",
+  "verified": true
+}
