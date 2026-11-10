@@ -44,7 +44,8 @@ Medido en Node en la máquina de desarrollo (un móvil de gama media será entre
 | Recomendar talla en las 44 guías del catálogo | 2,3 ms (0,05 ms por guía) |
 | Construir la prenda sobre el maniquí | 4,9 ms |
 
-Tamaño de la versión web: 3,4 MB de JavaScript (0,85 MB comprimido) y 3,7 MB
+Tamaño de la versión web: 3,0 MB de JavaScript (0,8 MB comprimido), 1,1 MB de
+tipografías e iconos y 3,7 MB
 del modelo (3,2 MB comprimido: ya está cuantizado y apenas se comprime más).
 
 Dónde se quedará corto y qué hacer entonces:

@@ -41,8 +41,8 @@ const style = html.match(/<style id="expo-reset">[\s\S]*?<\/style>/)[0];
 const scripts = [...html.matchAll(/<script src="\/(_expo\/[^"]+)" defer><\/script>/g)].map((m) => m[1]);
 const page = `<title>Probador</title>
 ${style.replace('</style>', `
-      html { box-sizing: border-box; background: #F6F2EC; }
-      body { background: #F6F2EC; color: #1F1B16; }
+      html { box-sizing: border-box; background: #1D2257; }
+      body { background: #1D2257; color: #171A33; }
     </style>`)}
 <noscript>Hace falta JavaScript para usar Probador.</noscript>
 <div id="root"></div>
